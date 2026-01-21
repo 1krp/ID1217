@@ -60,8 +60,17 @@ double read_timer() {
 double start_time, end_time; /* start and end times */
 int size, stripSize;  /* assume size is multiple of numWorkers */
 int sums[MAXWORKERS]; /* partial sums */
-struct pointValue maxArray[MAXWORKERS];
-struct pointValue minArray[MAXWORKERS];
+
+/*  sharded variable  */
+int sharedSum;
+pthread_mutex_t sharedtotal_mutex;
+
+struct pointValue sharedMax;
+pthread_mutex_t sharedmax_mutex;
+
+struct pointValue sharedMin;
+pthread_mutex_t sharedmin_mutex;
+
 int matrix[MAXSIZE][MAXSIZE]; /* matrix */
 
 void *Worker(void *);
@@ -80,6 +89,10 @@ int main(int argc, char *argv[]) {
   /* initialize mutex and condition variable */
   pthread_mutex_init(&barrier, NULL);
   pthread_cond_init(&go, NULL);
+
+  pthread_mutex_init(&sharedtotal_mutex, NULL);
+  pthread_mutex_init(&sharedmax_mutex, NULL);
+  pthread_mutex_init(&sharedmin_mutex, NULL);
 
   /* read command line args if any */
   size = (argc > 1)? atoi(argv[1]) : MAXSIZE;
@@ -144,25 +157,22 @@ void *Worker(void *arg) {
       if(min.value>matrix[i][j]){ min.value = matrix[i][j]; min.x = i; min.y = j; }
     }
   }
-  sums[myid] = total;
-  maxArray[myid] = max;
-  minArray[myid] = min;
-  Barrier();
+  pthread_mutex_lock(&sharedtotal_mutex);
+  sharedSum += total;
+  pthread_mutex_unlock(&sharedtotal_mutex);
+
+  if (sharedMax.value < max.value) { 
+    pthread_mutex_lock(&sharedmax_mutex);
+    sharedMax = max;
+    pthread_mutex_unlock(&sharedmax_mutex);
+  }
+  if (sharedMin.value < min.value) {
+    pthread_mutex_lock(&sharedmin_mutex);
+    sharedMin = min;
+    pthread_mutex_unlock(&sharedmin_mutex);
+  }
   if (myid == 0) {
-    total = 0;
-  struct pointValue maxFinal;
-  struct pointValue minFinal;
-  maxFinal.value = maxFinal.x = maxFinal.y = minFinal.x = minFinal.y = -1;
-  minFinal.value = 100;
-    for (i = 0; i < numWorkers; i++){
-      total += sums[i];
-      if(maxFinal.value<maxArray[i].value){
-        maxFinal = maxArray[i];
-      }
-      if(minFinal.value>minArray[i].value){
-        minFinal = minArray[i];
-      }
-    }  
+
     /* get end time */
     end_time = read_timer();
     /* print results */

@@ -131,12 +131,13 @@ void *Worker(void *arg) {
   total = 0;
   struct pointValue max;
   struct pointValue min;
+
   max.value = -1;
   max.x = -1;
   max.y = -1;
   min.x = -1;
   min.y = -1; 
-  min.value = 100;
+  min.value = INT_MAX;
   for (i = first; i <= last; i++){
     for (j = 0; j < size; j++){
       total += matrix[i][j];
@@ -153,7 +154,7 @@ void *Worker(void *arg) {
   struct pointValue maxFinal;
   struct pointValue minFinal;
   maxFinal.value = maxFinal.x = maxFinal.y = minFinal.x = minFinal.y = -1;
-  minFinal.value = 100;
+  minFinal.value = INT_MAX;
     for (i = 0; i < numWorkers; i++){
       total += sums[i];
       if(maxFinal.value<maxArray[i].value){

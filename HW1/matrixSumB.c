@@ -161,13 +161,12 @@ void *Worker(void *arg) {
   total = 0;
   struct pointValue max;
   struct pointValue min;
-
   max.value = -1;
   max.x = -1;
   max.y = -1;
   min.x = -1;
   min.y = -1; 
-  min.value = INT_MAX;
+  min.value = 100;
   for (i = first; i <= last; i++){
     for (j = 0; j < size; j++){
       total += matrix[i][j];
@@ -175,32 +174,13 @@ void *Worker(void *arg) {
       if(min.value>matrix[i][j]){ min.value = matrix[i][j]; min.x = i; min.y = j; }
     }
   }
-  sums[myid] = total;
-  maxArray[myid] = max;
-  minArray[myid] = min;
-  Barrier();
-  if (myid == 0) {
-    total = 0;
-  struct pointValue maxFinal;
-  struct pointValue minFinal;
-  maxFinal.value = maxFinal.x = maxFinal.y = minFinal.x = minFinal.y = -1;
-  minFinal.value = INT_MAX;
-    for (i = 0; i < numWorkers; i++){
-      total += sums[i];
-      if(maxFinal.value<maxArray[i].value){
-        maxFinal = maxArray[i];
-      }
-      if(minFinal.value>minArray[i].value){
-        minFinal = minArray[i];
-      }
-    }  
-    /* get end time */
-    end_time = read_timer();
-    /* print results */
-    printf("The total is %d\n", total);
-    printf("Max found at  x: %d y: %d value: %d\n", maxFinal.x, maxFinal.y, maxFinal.value);
-    printf("Min found at  x: %d y: %d value: %d\n", minFinal.x, minFinal.y, minFinal.value);
-    printf("The execution time is %g sec\n", end_time - start_time);
+  pthread_mutex_lock(&sharedtotal_mutex);
+  sharedSum += total;
+  pthread_mutex_unlock(&sharedtotal_mutex);
+
+  pthread_mutex_lock(&sharedmax_mutex);
+  if (sharedMax.value < max.value) { 
+    sharedMax = max;
   }
   pthread_mutex_unlock(&sharedmax_mutex);
 

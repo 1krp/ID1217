@@ -13,7 +13,6 @@
 #define _REENTRANT 
 #endif 
 #include <pthread.h>
-#include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -52,26 +51,10 @@ double read_timer() {
     gettimeofday( &end, NULL );
     return (end.tv_sec - start.tv_sec) + 1.0e-6 * (end.tv_usec - start.tv_usec);
 }
-  struct pointValue {
-    int value;
-    int x;
-    int y;
-  }; 
- 
+
 double start_time, end_time; /* start and end times */
 int size, stripSize;  /* assume size is multiple of numWorkers */
 int sums[MAXWORKERS]; /* partial sums */
-
-/*  sharded variable  */
-int sharedSum;
-pthread_mutex_t sharedtotal_mutex;
-
-struct pointValue sharedMax;
-pthread_mutex_t sharedmax_mutex;
-
-struct pointValue sharedMin;
-pthread_mutex_t sharedmin_mutex;
-
 int matrix[MAXSIZE][MAXSIZE]; /* matrix */
 
 void *Worker(void *);
@@ -91,10 +74,6 @@ int main(int argc, char *argv[]) {
   pthread_mutex_init(&barrier, NULL);
   pthread_cond_init(&go, NULL);
 
-  pthread_mutex_init(&sharedtotal_mutex, NULL);
-  pthread_mutex_init(&sharedmax_mutex, NULL);
-  pthread_mutex_init(&sharedmin_mutex, NULL);
-
   /* read command line args if any */
   size = (argc > 1)? atoi(argv[1]) : MAXSIZE;
   numWorkers = (argc > 2)? atoi(argv[2]) : MAXWORKERS;
@@ -105,11 +84,9 @@ int main(int argc, char *argv[]) {
   /* initialize the matrix */
   for (i = 0; i < size; i++) {
 	  for (j = 0; j < size; j++) {
-          matrix[i][j] = rand()%99; //1
+          matrix[i][j] = 1;//rand()%99;
 	  }
   }
-
-  sharedMin.value = INT_MAX;
 
   /* print the matrix */
 #ifdef DEBUG
@@ -126,20 +103,6 @@ int main(int argc, char *argv[]) {
   start_time = read_timer();
   for (l = 0; l < numWorkers; l++)
     pthread_create(&workerid[l], &attr, Worker, (void *) l);
-
-  for (l = 0; l < numWorkers; l++) {
-    pthread_join(workerid[l], NULL);
-  }
-
-  /* get end time */
-  end_time = read_timer();
-  /* print results */
-  printf("The total is %d\n", sharedSum);
-  printf("Max found at  x: %d y: %d value: %d\n", sharedMax.x, sharedMax.y, sharedMax.value);
-  printf("Min found at  x: %d y: %d value: %d\n", sharedMin.x, sharedMin.y, sharedMin.value);
-  printf("The execution time is %g sec\n", end_time - start_time);
-
-  
   pthread_exit(NULL);
 }
 
@@ -159,55 +122,19 @@ void *Worker(void *arg) {
 
   /* sum values in my strip */
   total = 0;
-  struct pointValue max;
-  struct pointValue min;
-
-  max.value = -1;
-  max.x = -1;
-  max.y = -1;
-  min.x = -1;
-  min.y = -1; 
-  min.value = INT_MAX;
-  for (i = first; i <= last; i++){
-    for (j = 0; j < size; j++){
+  for (i = first; i <= last; i++)
+    for (j = 0; j < size; j++)
       total += matrix[i][j];
-      if(max.value<matrix[i][j]){ max.value = matrix[i][j]; max.x = i; max.y = j; }
-      if(min.value>matrix[i][j]){ min.value = matrix[i][j]; min.x = i; min.y = j; }
-    }
-  }
   sums[myid] = total;
-  maxArray[myid] = max;
-  minArray[myid] = min;
   Barrier();
   if (myid == 0) {
     total = 0;
-  struct pointValue maxFinal;
-  struct pointValue minFinal;
-  maxFinal.value = maxFinal.x = maxFinal.y = minFinal.x = minFinal.y = -1;
-  minFinal.value = INT_MAX;
-    for (i = 0; i < numWorkers; i++){
+    for (i = 0; i < numWorkers; i++)
       total += sums[i];
-      if(maxFinal.value<maxArray[i].value){
-        maxFinal = maxArray[i];
-      }
-      if(minFinal.value>minArray[i].value){
-        minFinal = minArray[i];
-      }
-    }  
     /* get end time */
     end_time = read_timer();
     /* print results */
     printf("The total is %d\n", total);
-    printf("Max found at  x: %d y: %d value: %d\n", maxFinal.x, maxFinal.y, maxFinal.value);
-    printf("Min found at  x: %d y: %d value: %d\n", minFinal.x, minFinal.y, minFinal.value);
     printf("The execution time is %g sec\n", end_time - start_time);
   }
-  pthread_mutex_unlock(&sharedmax_mutex);
-
-  pthread_mutex_lock(&sharedmin_mutex);
-  if (sharedMin.value > min.value) {
-    sharedMin = min;
-  }
-  pthread_mutex_unlock(&sharedmin_mutex);
-
 }

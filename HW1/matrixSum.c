@@ -55,6 +55,8 @@ double read_timer() {
 double start_time, end_time; /* start and end times */
 int size, stripSize;  /* assume size is multiple of numWorkers */
 int sums[MAXWORKERS]; /* partial sums */
+int maxArray[MAXWORKERS];
+int minArray[MAXWORKERS];
 int matrix[MAXSIZE][MAXSIZE]; /* matrix */
 
 void *Worker(void *);
@@ -84,7 +86,7 @@ int main(int argc, char *argv[]) {
   /* initialize the matrix */
   for (i = 0; i < size; i++) {
 	  for (j = 0; j < size; j++) {
-          matrix[i][j] = 1;//rand()%99;
+          matrix[i][j] = rand()%99; //1
 	  }
   }
 
@@ -110,7 +112,7 @@ int main(int argc, char *argv[]) {
    After a barrier, worker(0) computes and prints the total */
 void *Worker(void *arg) {
   long myid = (long) arg;
-  int total, i, j, first, last;
+  int total, i, j, first, last, max, min;
 
 #ifdef DEBUG
   printf("worker %d (pthread id %d) has started\n", myid, pthread_self());
@@ -122,15 +124,24 @@ void *Worker(void *arg) {
 
   /* sum values in my strip */
   total = 0;
+  max = -1;
+  min = INT_MAX;
   for (i = first; i <= last; i++)
     for (j = 0; j < size; j++)
       total += matrix[i][j];
+      if(max<matrix [i][j]){ max = matrix [i][j]; }
+      if(min>matrix [i][j]){ min = matrix [i][j]; }
   sums[myid] = total;
+  maxArray[myid] = max;
+  minArray[myid] = min;
   Barrier();
   if (myid == 0) {
     total = 0;
+    max = -1;
+    min = INT_MAX;
     for (i = 0; i < numWorkers; i++)
       total += sums[i];
+      
     /* get end time */
     end_time = read_timer();
     /* print results */

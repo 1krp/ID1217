@@ -51,21 +51,17 @@ double read_timer() {
     gettimeofday( &end, NULL );
     return (end.tv_sec - start.tv_sec) + 1.0e-6 * (end.tv_usec - start.tv_usec);
 }
-  struct max {
+  struct pointValue {
     int value;
     int x;
     int y;
   }; 
-  struct min {
-    int value;
-    int x;
-    int y;
-  }; 
+ 
 double start_time, end_time; /* start and end times */
 int size, stripSize;  /* assume size is multiple of numWorkers */
 int sums[MAXWORKERS]; /* partial sums */
-struct max maxArray[MAXWORKERS];
-struct min minArray[MAXWORKERS];
+struct pointValue maxArray[MAXWORKERS];
+struct pointValue minArray[MAXWORKERS];
 int matrix[MAXSIZE][MAXSIZE]; /* matrix */
 
 void *Worker(void *);
@@ -133,34 +129,40 @@ void *Worker(void *arg) {
 
   /* sum values in my strip */
   total = 0;
-  struct max max;
-  struct min min;
-  max.value, max.x, max.y, min.x, min.y = -1;
-  min.value = INT_MAX;
-  for (i = first; i <= last; i++)
-    for (j = 0; j < size; j++)
+  struct pointValue max;
+  struct pointValue min;
+  max.value = -1;
+  max.x = -1;
+  max.y = -1;
+  min.x = -1;
+  min.y = -1; 
+  min.value = 100;
+  for (i = first; i <= last; i++){
+    for (j = 0; j < size; j++){
       total += matrix[i][j];
-      if(max.value<matrix [i][j]){ max.value = matrix [i][j]; max.x = i; max.y = j; }
-      if(min.value>matrix [i][j]){ min.value = matrix [i][j]; min.x = i; min.y = j; }
+      if(max.value<matrix[i][j]){ max.value = matrix[i][j]; max.x = i; max.y = j; }
+      if(min.value>matrix[i][j]){ min.value = matrix[i][j]; min.x = i; min.y = j; }
+    }
+  }
   sums[myid] = total;
   maxArray[myid] = max;
   minArray[myid] = min;
   Barrier();
   if (myid == 0) {
     total = 0;
-  struct max maxFinal;
-  struct min minFinal;
-  max.value, max.x, max.y, min.x, min.y = -1;
-  min.value = INT_MAX;
-    for (i = 0; i < numWorkers; i++)
+  struct pointValue maxFinal;
+  struct pointValue minFinal;
+  maxFinal.value = maxFinal.x = maxFinal.y = minFinal.x = minFinal.y = -1;
+  minFinal.value = 100;
+    for (i = 0; i < numWorkers; i++){
       total += sums[i];
       if(maxFinal.value<maxArray[i].value){
         maxFinal = maxArray[i];
       }
-      if(minFinal.value<minArray[i].value){
+      if(minFinal.value>minArray[i].value){
         minFinal = minArray[i];
       }
-      
+    }  
     /* get end time */
     end_time = read_timer();
     /* print results */

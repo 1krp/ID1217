@@ -13,6 +13,7 @@
 #define _REENTRANT 
 #endif 
 #include <pthread.h>
+#include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -108,6 +109,8 @@ int main(int argc, char *argv[]) {
 	  }
   }
 
+  sharedMin.value = INT_MAX;
+
   /* print the matrix */
 #ifdef DEBUG
   for (i = 0; i < size; i++) {
@@ -123,6 +126,22 @@ int main(int argc, char *argv[]) {
   start_time = read_timer();
   for (l = 0; l < numWorkers; l++)
     pthread_create(&workerid[l], &attr, Worker, (void *) l);
+
+
+
+  for (l = 0; l < numWorkers; l++) {
+    pthread_join(workerid[l], NULL);
+  }
+
+  /* get end time */
+  end_time = read_timer();
+  /* print results */
+  printf("The total is %d\n", sharedSum);
+  printf("Max found at  x: %d y: %d value: %d\n", sharedMax.x, sharedMax.y, sharedMax.value);
+  printf("Min found at  x: %d y: %d value: %d\n", sharedMin.x, sharedMin.y, sharedMin.value);
+  printf("The execution time is %g sec\n", end_time - start_time);
+
+  
   pthread_exit(NULL);
 }
 
@@ -161,24 +180,16 @@ void *Worker(void *arg) {
   sharedSum += total;
   pthread_mutex_unlock(&sharedtotal_mutex);
 
+  pthread_mutex_lock(&sharedmax_mutex);
   if (sharedMax.value < max.value) { 
-    pthread_mutex_lock(&sharedmax_mutex);
     sharedMax = max;
-    pthread_mutex_unlock(&sharedmax_mutex);
   }
-  if (sharedMin.value < min.value) {
-    pthread_mutex_lock(&sharedmin_mutex);
-    sharedMin = min;
-    pthread_mutex_unlock(&sharedmin_mutex);
-  }
-  if (myid == 0) {
+  pthread_mutex_unlock(&sharedmax_mutex);
 
-    /* get end time */
-    end_time = read_timer();
-    /* print results */
-    printf("The total is %d\n", total);
-    printf("Max found at  x: %d y: %d value: %d\n", maxFinal.x, maxFinal.y, maxFinal.value);
-    printf("Min found at  x: %d y: %d value: %d\n", minFinal.x, minFinal.y, minFinal.value);
-    printf("The execution time is %g sec\n", end_time - start_time);
+  pthread_mutex_lock(&sharedmin_mutex);
+  if (sharedMin.value > min.value) {
+    sharedMin = min;
   }
+  pthread_mutex_unlock(&sharedmin_mutex);
+
 }

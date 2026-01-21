@@ -51,12 +51,21 @@ double read_timer() {
     gettimeofday( &end, NULL );
     return (end.tv_sec - start.tv_sec) + 1.0e-6 * (end.tv_usec - start.tv_usec);
 }
-
+  struct max {
+    int value;
+    int x;
+    int y;
+  }; 
+  struct min {
+    int value;
+    int x;
+    int y;
+  }; 
 double start_time, end_time; /* start and end times */
 int size, stripSize;  /* assume size is multiple of numWorkers */
 int sums[MAXWORKERS]; /* partial sums */
-int maxArray[MAXWORKERS];
-int minArray[MAXWORKERS];
+struct max maxArray[MAXWORKERS];
+struct min minArray[MAXWORKERS];
 int matrix[MAXSIZE][MAXSIZE]; /* matrix */
 
 void *Worker(void *);
@@ -112,7 +121,7 @@ int main(int argc, char *argv[]) {
    After a barrier, worker(0) computes and prints the total */
 void *Worker(void *arg) {
   long myid = (long) arg;
-  int total, i, j, first, last, max, min;
+  int total, i, j, first, last;
 
 #ifdef DEBUG
   printf("worker %d (pthread id %d) has started\n", myid, pthread_self());
@@ -124,28 +133,40 @@ void *Worker(void *arg) {
 
   /* sum values in my strip */
   total = 0;
-  max = -1;
-  min = INT_MAX;
+  struct max max;
+  struct min min;
+  max.value, max.x, max.y, min.x, min.y = -1;
+  min.value = INT_MAX;
   for (i = first; i <= last; i++)
     for (j = 0; j < size; j++)
       total += matrix[i][j];
-      if(max<matrix [i][j]){ max = matrix [i][j]; }
-      if(min>matrix [i][j]){ min = matrix [i][j]; }
+      if(max.value<matrix [i][j]){ max.value = matrix [i][j]; max.x = i; max.y = j; }
+      if(min.value>matrix [i][j]){ min.value = matrix [i][j]; min.x = i; min.y = j; }
   sums[myid] = total;
   maxArray[myid] = max;
   minArray[myid] = min;
   Barrier();
   if (myid == 0) {
     total = 0;
-    max = -1;
-    min = INT_MAX;
+  struct max maxFinal;
+  struct min minFinal;
+  max.value, max.x, max.y, min.x, min.y = -1;
+  min.value = INT_MAX;
     for (i = 0; i < numWorkers; i++)
       total += sums[i];
+      if(maxFinal.value<maxArray[i].value){
+        maxFinal = maxArray[i];
+      }
+      if(minFinal.value<minArray[i].value){
+        minFinal = minArray[i];
+      }
       
     /* get end time */
     end_time = read_timer();
     /* print results */
     printf("The total is %d\n", total);
+    printf("Max found at  x: %d y: %d value: %d\n", maxFinal.x, maxFinal.y, maxFinal.value);
+    printf("Min found at  x: %d y: %d value: %d\n", minFinal.x, minFinal.y, minFinal.value);
     printf("The execution time is %g sec\n", end_time - start_time);
   }
 }

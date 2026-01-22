@@ -12,6 +12,7 @@
 #ifndef _REENTRANT 
 #define _REENTRANT 
 #endif 
+#include <stdbool.h>
 #include <pthread.h>
 #include <limits.h>
 #include <stdlib.h>
@@ -19,8 +20,8 @@
 #include <stdbool.h>
 #include <time.h>
 #include <sys/time.h>
-#define MAXSIZE 10000  /* maximum matrix size */
-//#define MAXWORKERS 10   /* maximum number of workers */
+#define MAXSIZE 100000000  /* maximum matrix size */
+#define MAXTHREADS 32   /* maximum number of threads */
 
 pthread_mutex_t barrier;  /* mutex lock for the barrier */
 pthread_cond_t go;        /* condition variable for leaving */
@@ -29,6 +30,8 @@ int numArrived = 0;       /* number who have arrived */
 
 int numThreads = 0;
 pthread_mutex_t numthreads_m;
+
+int maxThreads;
 
 /* a reusable counter barrier */
 void Barrier() {
@@ -90,8 +93,9 @@ int main(int argc, char *argv[]) {
   pthread_mutex_init(&numthreads_m, NULL);
 
   size = (argc > 1)? atoi(argv[1]) : MAXSIZE;
+  maxThreads = (argc > 2)? atoi(argv[2]) : MAXTHREADS;
   if (size > MAXSIZE) size = MAXSIZE;
-
+  if (maxThreads > MAXTHREADS) maxThreads = MAXTHREADS;
 
   /* read command line args if any */
 
@@ -121,7 +125,7 @@ int main(int argc, char *argv[]) {
     printf("%d ",array[i]);
   }
   #endif
-  printf("\n");
+  printf("size: %d\n", size);
 
   printf("numThreads: %d\n", numThreads);
   
@@ -138,6 +142,16 @@ void *quickSortThread(void *arg) {
     free(a);  
 }
 
+int threads(){   
+  int check = 0;
+  pthread_mutex_lock(&numthreads_m);
+  if (numThreads < maxThreads) {
+    numThreads++;
+    check = 1;
+  }
+  pthread_mutex_unlock(&numthreads_m);
+  return check;
+}
 
 void quickSort(int *org, int start, int end) {
   if (end <= start) {
@@ -145,27 +159,28 @@ void quickSort(int *org, int start, int end) {
   }                   //base case
   int pivot = partition(org, start, end);
 
-  pthread_t t;
-  pthread_attr_t attr;
-  pthread_attr_init(&attr);
+  if(threads()) {
+    pthread_t t;
+    pthread_attr_t attr;
+    pthread_attr_init(&attr);
 
-  args *left = malloc(sizeof(args));
-  left->org = org;
-  left->start = start;
-  left->end = pivot -1;
+    args *left = malloc(sizeof(args));
+    left->org = org;
+    left->start = start;
+    left->end = pivot -1;
 
-  pthread_create(&t, &attr, quickSortThread, left); //left
-  quickSort(org, pivot + 1, end);   //right
+    pthread_create(&t, &attr, quickSortThread, left); //left
+    quickSort(org, pivot + 1, end);   //right
 
-  pthread_mutex_lock(&numthreads_m);
-  numThreads++;
-  pthread_mutex_unlock(&numthreads_m);
-
+    pthread_join(t, NULL); 
+  } else {
+    //seq
+    quickSort(org, start, pivot - 1);
+    quickSort(org, pivot + 1, end);
+  }
   #ifdef DEBUG // pivot, start, end
   printf("pivot point: %d, start: %d, end: %d \n", pivot, start, end);
   #endif
-
-  pthread_join(t, NULL); 
 }
 
 int partition(int *org, int start, int end) {
@@ -174,10 +189,10 @@ int partition(int *org, int start, int end) {
 
   for (int j = start; j <= end -1; j++) {
       if(org[j] < pivot) {
-          i++;
-          int temp = org[i];
-          org[i] = org[j];
-          org[j] = temp;
+        i++;
+        int temp = org[i];
+        org[i] = org[j];
+        org[j] = temp;
       }
   }
   i++;

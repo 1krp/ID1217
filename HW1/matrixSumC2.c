@@ -156,7 +156,7 @@ int main(int argc, char *argv[]) {
 
   for (int i = 0; i < MAXWORKERS; i++) {
     if (workDist[i] != 0){
-      printf("[worker: %d -> %d rows]",i ,workDist[i] );
+      printf("[worker %d: %d rows]",i ,workDist[i] );
     }else{
       printf("\n");
       break;

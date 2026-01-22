@@ -52,11 +52,6 @@ double read_timer() {
     gettimeofday( &end, NULL );
     return (end.tv_sec - start.tv_sec) + 1.0e-6 * (end.tv_usec - start.tv_usec);
 }
-  struct pointValue {
-    int value;
-    int x;
-    int y;
-  }; 
  
 double start_time, end_time; /* start and end times */
 int size, stripSize;  /* assume size is multiple of numWorkers */
@@ -74,7 +69,6 @@ pthread_mutex_t sharedmax_mutex;
 struct pointValue sharedMin;
 pthread_mutex_t sharedmin_mutex;
 
-int matrix[MAXSIZE][MAXSIZE]; /* matrix */
 
 void *Worker(void *);
 
@@ -124,14 +118,12 @@ int main(int argc, char *argv[]) {
   if (numWorkers > MAXWORKERS) numWorkers = MAXWORKERS;
   stripSize = size/numWorkers;
 
-  /* initialize the matrix */
-  for (i = 0; i < size; i++) {
-	  for (j = 0; j < size; j++) {
-          matrix[i][j] = rand()%99; //1
+  /* initialize the array */
+    int array[size];
+	  for (i = 0; i < size; i++) {
+          array[i] = rand()%size+1; //1
 	  }
-  }
 
-  sharedMin.value = INT_MAX;
 
   /* print the matrix */
 #ifdef DEBUG
@@ -189,49 +181,6 @@ void *Worker(void *arg) {
   last = (myid == numWorkers - 1) ? (size - 1) : (first + stripSize - 1);
 
 
-  while (true) {
-    int row = bagOfTasks();
 
-    if(row < 0){
-      break;
-    }
-
-    #ifdef DEBUG
-      printf("worker %d (pthread id %d) has started on row %d\n", myid, pthread_self(), row);
-    #endif
-  
-     /* sum values in my strip */
-    total = 0;
-    struct pointValue max;
-    struct pointValue min;
-    max.value = -1;
-    max.x = -1;
-    max.y = -1;
-    min.x = -1;
-    min.y = -1; 
-    min.value = 100;
-    for (j = 0; j < size; j++){
-      total += matrix[row][j];
-      if(max.value<matrix[row][j]){ max.value = matrix[row][j]; max.x = row; max.y = j; }
-      if(min.value>matrix[row][j]){ min.value = matrix[row][j]; min.x = row; min.y = j; }
-    }
-    pthread_mutex_lock(&sharedtotal_mutex);
-    sharedSum += total;
-    pthread_mutex_unlock(&sharedtotal_mutex);
-
-    pthread_mutex_lock(&sharedmax_mutex);
-    if (sharedMax.value < max.value) { 
-      sharedMax = max;
-    }
-    pthread_mutex_unlock(&sharedmax_mutex);
-
-    pthread_mutex_lock(&sharedmin_mutex);
-    if (sharedMin.value > min.value) {
-      sharedMin = min;
-    }
-    pthread_mutex_unlock(&sharedmin_mutex);
-
-    workDist[myid]++;
-  }
   
 }

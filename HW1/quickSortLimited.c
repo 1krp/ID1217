@@ -23,27 +23,9 @@
 #define MAXSIZE 100000000  /* maximum matrix size */
 #define MAXTHREADS 32   /* maximum number of threads */
 
-pthread_mutex_t barrier;  /* mutex lock for the barrier */
-pthread_cond_t go;        /* condition variable for leaving */
-int numWorkers;           /* number of workers */ 
-int numArrived = 0;       /* number who have arrived */
-
 int numThreads = 0;
 pthread_mutex_t numthreads_m;
-
 int maxThreads;
-
-/* a reusable counter barrier */
-void Barrier() {
-  pthread_mutex_lock(&barrier);
-  numArrived++;
-  if (numArrived == numWorkers) {
-    numArrived = 0;
-    pthread_cond_broadcast(&go);
-  } else
-    pthread_cond_wait(&go, &barrier);
-  pthread_mutex_unlock(&barrier);
-}
 
 /* timer */
 double read_timer() {
@@ -71,9 +53,7 @@ int size, stripSize;  /* assume size is multiple of numWorkers */
 
 int* array;
 
-/*  sharded variable  */
-
-void *Worker(void *);
+/*  shared variable  */
 
 
 
@@ -87,9 +67,6 @@ int main(int argc, char *argv[]) {
   /* set global thread attributes */
 
   /* initialize mutex and condition variable */
-  pthread_mutex_init(&barrier, NULL);
-  pthread_cond_init(&go, NULL);
-
   pthread_mutex_init(&numthreads_m, NULL);
 
   size = (argc > 1)? atoi(argv[1]) : MAXSIZE;

@@ -45,7 +45,7 @@ double read_timer() {
 double start_time, end_time; /* start and end times */
 int size, stripSize;  /* assume size is multiple of numWorkers */
 
-/*  sharded variable  */
+/*  shared variable  */
 int sharedSum;
 pthread_mutex_t sharedtotal_mutex;
 
@@ -142,11 +142,7 @@ void *Worker(void *arg) {
   total = 0;
   struct pointValue max;
   struct pointValue min;
-  max.value = -1;
-  max.x = -1;
-  max.y = -1;
-  min.x = -1;
-  min.y = -1; 
+  max.value = max.x = max.y = min.x = min.y = -1;
   min.value = 100;
   for (i = first; i <= last; i++){
     for (j = 0; j < size; j++){

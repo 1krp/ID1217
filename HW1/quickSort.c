@@ -22,25 +22,10 @@
 #define MAXSIZE 10000  /* maximum matrix size */
 //#define MAXWORKERS 10   /* maximum number of workers */
 
-pthread_mutex_t barrier;  /* mutex lock for the barrier */
-pthread_cond_t go;        /* condition variable for leaving */
 int numWorkers;           /* number of workers */ 
-int numArrived = 0;       /* number who have arrived */
 
 int numThreads = 0;
 pthread_mutex_t numthreads_m;
-
-/* a reusable counter barrier */
-void Barrier() {
-  pthread_mutex_lock(&barrier);
-  numArrived++;
-  if (numArrived == numWorkers) {
-    numArrived = 0;
-    pthread_cond_broadcast(&go);
-  } else
-    pthread_cond_wait(&go, &barrier);
-  pthread_mutex_unlock(&barrier);
-}
 
 /* timer */
 double read_timer() {
@@ -64,13 +49,11 @@ typedef struct {
 
  
 double start_time, end_time; /* start and end times */
-int size, stripSize;  /* assume size is multiple of numWorkers */
+int size;  /* assume size is multiple of numWorkers */
 
 int* array;
 
-/*  sharded variable  */
-
-void *Worker(void *);
+/*  shared variable  */
 
 
 
@@ -79,13 +62,7 @@ int main(int argc, char *argv[]) {
   int i, j;
   long l; /* use long in case of a 64-bit system */
 
-
-
-  /* set global thread attributes */
-
   /* initialize mutex and condition variable */
-  pthread_mutex_init(&barrier, NULL);
-  pthread_cond_init(&go, NULL);
 
   pthread_mutex_init(&numthreads_m, NULL);
 
@@ -110,7 +87,7 @@ int main(int argc, char *argv[]) {
   /* do the parallel work: create the workers */
   start_time = read_timer();
 
-  quickSort(array,0 , size-1);
+  quickSort(array, 0, size-1);
   /* get end time */
   end_time = read_timer();
   /* print results */

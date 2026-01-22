@@ -22,7 +22,6 @@
 #define MAXSIZE 10000  /* maximum matrix size */
 #define MAXWORKERS 10   /* maximum number of workers */
 int numWorkers;           /* number of workers */ 
-int numArrived = 0;       /* number who have arrived */
 
 /* timer */
 double read_timer() {
@@ -45,7 +44,6 @@ double read_timer() {
  
 double start_time, end_time; /* start and end times */
 int size, stripSize;  /* assume size is multiple of numWorkers */
-int sums[MAXWORKERS]; /* partial sums */
 
 /*  sharded variable  */
 int sharedSum;

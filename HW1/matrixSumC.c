@@ -21,10 +21,7 @@
 #include <sys/time.h>
 #define MAXSIZE 10000  /* maximum matrix size */
 #define MAXWORKERS 10   /* maximum number of workers */
-
 int numWorkers;           /* number of workers */ 
-int numArrived = 0;       /* number who have arrived */
-
 
 /* timer */
 double read_timer() {
@@ -46,12 +43,10 @@ double read_timer() {
   }; 
  
 double start_time, end_time; /* start and end times */
-int size, stripSize;  /* assume size is multiple of numWorkers */
-int sums[MAXWORKERS]; /* partial sums */
-
+int size;  /* assume size is multiple of numWorkers */
 int workDist[MAXWORKERS];
 
-/*  sharded variable  */
+/*  shared variable  */
 int sharedSum;
 pthread_mutex_t sharedtotal_mutex;
 
@@ -83,7 +78,7 @@ int bagOfTasks(){
 } 
 
 
-/* read command line, initialize, and create threads */
+/* read command line, initialize, and create threads, print result */
 int main(int argc, char *argv[]) {
   int i, j;
   long l; /* use long in case of a 64-bit system */
@@ -107,7 +102,6 @@ int main(int argc, char *argv[]) {
   numWorkers = (argc > 2)? atoi(argv[2]) : MAXWORKERS;
   if (size > MAXSIZE) size = MAXSIZE;
   if (numWorkers > MAXWORKERS) numWorkers = MAXWORKERS;
-  stripSize = size/numWorkers;
 
   /* initialize the matrix */
   for (i = 0; i < size; i++) {
@@ -159,19 +153,16 @@ int main(int argc, char *argv[]) {
   pthread_exit(NULL);
 }
 
-/* Each worker sums the values in one strip of the matrix.
-   After a barrier, worker(0) computes and prints the total */
+/* Each worker sums the values and finds max and min in one row of the matrix. */
 void *Worker(void *arg) {
   long myid = (long) arg;
-  int total, i, j, first, last;
+  int total, i, j;
 
 #ifdef DEBUG
   printf("worker %d (pthread id %d) has started\n", myid, pthread_self());
 #endif
 
-  /* determine first and last rows of my strip */
-  first = myid*stripSize;
-  last = (myid == numWorkers - 1) ? (size - 1) : (first + stripSize - 1);
+
 
 
   while (true) {
@@ -185,7 +176,7 @@ void *Worker(void *arg) {
       printf("worker %d (pthread id %d) has started on row %d\n", myid, pthread_self(), row);
     #endif
   
-     /* sum values in my strip */
+     /* sum max min on row */
     total = 0;
     struct pointValue max;
     struct pointValue min;

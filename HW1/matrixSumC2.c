@@ -83,7 +83,14 @@ pthread_mutex_t nextrow_mutex;
 
 int bagOfTasks(){
   pthread_mutex_lock(&nextrow_mutex);
-  int row = nextRow++;
+  int row = nextRow;
+  
+  if (row < size) {
+    nextRow++;
+  } else {
+    row = -1;
+  }
+  
   pthread_mutex_unlock(&nextrow_mutex);
   return row;
 } 
@@ -182,8 +189,12 @@ void *Worker(void *arg) {
   last = (myid == numWorkers - 1) ? (size - 1) : (first + stripSize - 1);
 
 
-  while (nextRow < size) {
+  while (true) {
     int row = bagOfTasks();
+
+    if(row < 0){
+      break;
+    }
 
     #ifdef DEBUG
       printf("worker %d (pthread id %d) has started on row %d\n", myid, pthread_self(), row);

@@ -1,0 +1,4 @@
+size: 10,#threads: 5,The execution time is 0.000464 sec 
+size: 100,#threads: 69,The execution time is 0.005154 sec 
+size: 1000,#threads: 681,The execution time is 0.035243 sec 
+size: 10000,#threads: 6779,The execution time is 0.315954 sec 

@@ -1,0 +1,7 @@
+size: 100000000,The execution time is 8.20209 sec,threads: 1
+size: 100000000,The execution time is 7.99617 sec,threads: 4
+size: 100000000,The execution time is 7.63717 sec,threads: 8
+size: 100000000,The execution time is 5.44809 sec,threads: 16
+size: 100000000,The execution time is 7.50397 sec,threads: 32
+size: 100000000,The execution time is 9.31297 sec,threads: 64
+size: 100000000,The execution time is 8.62676 sec,threads: 128

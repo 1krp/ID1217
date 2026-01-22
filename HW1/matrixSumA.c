@@ -20,7 +20,7 @@
 #include <time.h>
 #include <sys/time.h>
 #define MAXSIZE 10000  /* maximum matrix size */
-#define MAXWORKERS 10   /* maximum number of workers */
+#define MAXWORKERS 16   /* maximum number of workers */
 
 pthread_mutex_t barrier;  /* mutex lock for the barrier */
 pthread_cond_t go;        /* condition variable for leaving */

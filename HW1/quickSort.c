@@ -76,56 +76,65 @@ void *Worker(void *);
 
 /* read command line, initialize, and create threads */
 int main(int argc, char *argv[]) {
-  int i, j;
-  long l; /* use long in case of a 64-bit system */
+  int sizes[]={10,100,1000,10000};
+  for(int loop = 0; loop < 4; loop++){
+    size = sizes[loop];
+    int i=0; 
+    int j=0;
+    long l=0; /* use long in case of a 64-bit system */
 
 
 
-  /* set global thread attributes */
+    /* set global thread attributes */
 
-  /* initialize mutex and condition variable */
-  pthread_mutex_init(&barrier, NULL);
-  pthread_cond_init(&go, NULL);
+    /* initialize mutex and condition variable */
+    pthread_mutex_init(&barrier, NULL);
+    pthread_cond_init(&go, NULL);
 
-  pthread_mutex_init(&numthreads_m, NULL);
+    pthread_mutex_init(&numthreads_m, NULL);
+    /*
+    size = (argc > 1)? atoi(argv[1]) : MAXSIZE;
+    if (size > MAXSIZE) size = MAXSIZE;
+    */
 
-  size = (argc > 1)? atoi(argv[1]) : MAXSIZE;
-  if (size > MAXSIZE) size = MAXSIZE;
+    /* read command line args if any */
 
+    /* initialize the array */
+      array = malloc(size * sizeof(int));
+      for (i = 0; i < size; i++) {
+            array[i] = rand()%size+1;
+      }
+  #ifdef DEBUG //unsorted arr
+      for (int i = 0; i < size; i++) {
+        printf("%d ",array[i]);
+      }
+      printf("\n");
+  #endif
 
-  /* read command line args if any */
+    /* do the parallel work: create the workers */
+    start_time = read_timer();
 
-  /* initialize the array */
-    array = malloc(size * sizeof(int));
-	  for (i = 0; i < size; i++) {
-          array[i] = rand()%size+1;
-	  }
-#ifdef DEBUG //unsorted arr
+    quickSort(array,0 , size-1);
+    /* get end time */
+    end_time = read_timer();
+    /* print results */
+    printf("size: %d,",size);
+    printf("#threads: %d,",numThreads);
+    printf("The execution time is %g sec \n", end_time - start_time);
+    
+    numThreads=0;
+
+    #ifdef DEBUG //sorted arr
     for (int i = 0; i < size; i++) {
       printf("%d ",array[i]);
     }
-    printf("\n");
-#endif
+    #endif
+    
 
-  /* do the parallel work: create the workers */
-  start_time = read_timer();
-
-  quickSort(array,0 , size-1);
-  /* get end time */
-  end_time = read_timer();
-  /* print results */
-  printf("The execution time is %g sec\n", end_time - start_time);
-  
-  #ifdef DEBUG //sorted arr
-  for (int i = 0; i < size; i++) {
-    printf("%d ",array[i]);
+    
+    
+    //pthread_exit(NULL);
   }
-  #endif
-  printf("\n");
-
-  printf("numThreads: %d\n", numThreads);
-  
-  pthread_exit(NULL);
 }
 
 /* Each worker sums the values in one strip of the matrix.

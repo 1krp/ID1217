@@ -62,6 +62,8 @@ double start_time, end_time; /* start and end times */
 int size, stripSize;  /* assume size is multiple of numWorkers */
 int sums[MAXWORKERS]; /* partial sums */
 
+int workDist[MAXWORKERS];
+
 /*  sharded variable  */
 int sharedSum;
 pthread_mutex_t sharedtotal_mutex;
@@ -75,6 +77,24 @@ pthread_mutex_t sharedmin_mutex;
 int matrix[MAXSIZE][MAXSIZE]; /* matrix */
 
 void *Worker(void *);
+
+int nextRow;
+pthread_mutex_t nextrow_mutex;
+
+int bagOfTasks(){
+  pthread_mutex_lock(&nextrow_mutex);
+  int row = nextRow;
+  
+  if (row < size) {
+    nextRow++;
+  } else {
+    row = -1;
+  }
+  
+  pthread_mutex_unlock(&nextrow_mutex);
+  return row;
+} 
+
 
 /* read command line, initialize, and create threads */
 int main(int argc, char *argv[]) {
@@ -94,6 +114,8 @@ int main(int argc, char *argv[]) {
   pthread_mutex_init(&sharedtotal_mutex, NULL);
   pthread_mutex_init(&sharedmax_mutex, NULL);
   pthread_mutex_init(&sharedmin_mutex, NULL);
+
+   pthread_mutex_init(&nextrow_mutex, NULL);
 
   /* read command line args if any */
   size = (argc > 1)? atoi(argv[1]) : MAXSIZE;
@@ -139,6 +161,15 @@ int main(int argc, char *argv[]) {
   printf("Min found at  x: %d y: %d value: %d\n", sharedMin.x, sharedMin.y, sharedMin.value);
   printf("The execution time is %g sec\n", end_time - start_time);
 
+  for (int i = 0; i < MAXWORKERS; i++) {
+    if (workDist[i] != 0){
+      printf("[worker %d: %d rows]",i ,workDist[i] );
+    }else{
+      printf("\n");
+      break;
+    }
+  }
+  
   
   pthread_exit(NULL);
 }
@@ -157,37 +188,50 @@ void *Worker(void *arg) {
   first = myid*stripSize;
   last = (myid == numWorkers - 1) ? (size - 1) : (first + stripSize - 1);
 
-  /* sum values in my strip */
-  total = 0;
-  struct pointValue max;
-  struct pointValue min;
-  max.value = -1;
-  max.x = -1;
-  max.y = -1;
-  min.x = -1;
-  min.y = -1; 
-  min.value = 100;
-  for (i = first; i <= last; i++){
-    for (j = 0; j < size; j++){
-      total += matrix[i][j];
-      if(max.value<matrix[i][j]){ max.value = matrix[i][j]; max.x = i; max.y = j; }
-      if(min.value>matrix[i][j]){ min.value = matrix[i][j]; min.x = i; min.y = j; }
+
+  while (true) {
+    int row = bagOfTasks();
+
+    if(row < 0){
+      break;
     }
-  }
-  pthread_mutex_lock(&sharedtotal_mutex);
-  sharedSum += total;
-  pthread_mutex_unlock(&sharedtotal_mutex);
 
-  pthread_mutex_lock(&sharedmax_mutex);
-  if (sharedMax.value < max.value) { 
-    sharedMax = max;
-  }
-  pthread_mutex_unlock(&sharedmax_mutex);
+    #ifdef DEBUG
+      printf("worker %d (pthread id %d) has started on row %d\n", myid, pthread_self(), row);
+    #endif
+  
+     /* sum values in my strip */
+    total = 0;
+    struct pointValue max;
+    struct pointValue min;
+    max.value = -1;
+    max.x = -1;
+    max.y = -1;
+    min.x = -1;
+    min.y = -1; 
+    min.value = 100;
+    for (j = 0; j < size; j++){
+      total += matrix[row][j];
+      if(max.value<matrix[row][j]){ max.value = matrix[row][j]; max.x = row; max.y = j; }
+      if(min.value>matrix[row][j]){ min.value = matrix[row][j]; min.x = row; min.y = j; }
+    }
+    pthread_mutex_lock(&sharedtotal_mutex);
+    sharedSum += total;
+    pthread_mutex_unlock(&sharedtotal_mutex);
 
-  pthread_mutex_lock(&sharedmin_mutex);
-  if (sharedMin.value > min.value) {
-    sharedMin = min;
-  }
-  pthread_mutex_unlock(&sharedmin_mutex);
+    pthread_mutex_lock(&sharedmax_mutex);
+    if (sharedMax.value < max.value) { 
+      sharedMax = max;
+    }
+    pthread_mutex_unlock(&sharedmax_mutex);
 
+    pthread_mutex_lock(&sharedmin_mutex);
+    if (sharedMin.value > min.value) {
+      sharedMin = min;
+    }
+    pthread_mutex_unlock(&sharedmin_mutex);
+
+    workDist[myid]++;
+  }
+  
 }

@@ -22,22 +22,9 @@
 #define MAXSIZE 10000  /* maximum matrix size */
 #define MAXWORKERS 10   /* maximum number of workers */
 
-pthread_mutex_t barrier;  /* mutex lock for the barrier */
-pthread_cond_t go;        /* condition variable for leaving */
 int numWorkers;           /* number of workers */ 
 int numArrived = 0;       /* number who have arrived */
 
-/* a reusable counter barrier */
-void Barrier() {
-  pthread_mutex_lock(&barrier);
-  numArrived++;
-  if (numArrived == numWorkers) {
-    numArrived = 0;
-    pthread_cond_broadcast(&go);
-  } else
-    pthread_cond_wait(&go, &barrier);
-  pthread_mutex_unlock(&barrier);
-}
 
 /* timer */
 double read_timer() {
@@ -107,9 +94,7 @@ int main(int argc, char *argv[]) {
   pthread_attr_init(&attr);
   pthread_attr_setscope(&attr, PTHREAD_SCOPE_SYSTEM);
 
-  /* initialize mutex and condition variable */
-  pthread_mutex_init(&barrier, NULL);
-  pthread_cond_init(&go, NULL);
+  /* initialize mutex */
 
   pthread_mutex_init(&sharedtotal_mutex, NULL);
   pthread_mutex_init(&sharedmax_mutex, NULL);

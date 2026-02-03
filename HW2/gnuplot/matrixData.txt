@@ -1,240 +1,300 @@
-size: 1000, threads:1, time: 0.000967215, tot = 500045481283, min = 2, max = 999999 
-size: 1000, threads:2, time: 0.000560923, tot = 500106462901, min = 0, max = 999999 
-size: 1000, threads:4, time: 0.000429987, tot = 500124816625, min = 0, max = 999998 
-size: 1000, threads:8, time: 0.000684169, tot = 499674870374, min = 0, max = 999999 
-size: 1000, threads:16, time: 0.000782016, tot = 499610898045, min = 0, max = 999999 
-size: 1000, threads:32, time: 0.00251962, tot = 500244484837, min = 2, max = 999999 
-size: 2000, threads:1, time: 0.00370056, tot = 7997896465689, min = 0, max = 3999999 
-size: 2000, threads:2, time: 0.00265329, tot = 7997698298842, min = 1, max = 3999998 
-size: 2000, threads:4, time: 0.00152344, tot = 7995029332426, min = 0, max = 3999998 
-size: 2000, threads:8, time: 0.00132297, tot = 8000924898328, min = 1, max = 3999999 
-size: 2000, threads:16, time: 0.00147776, tot = 8000975309348, min = 2, max = 3999999 
-size: 2000, threads:32, time: 0.00242717, tot = 7998248892274, min = 0, max = 3999999 
-size: 3000, threads:1, time: 0.00813198, tot = 40453286828728, min = 1, max = 8999999 
-size: 3000, threads:2, time: 0.00468655, tot = 40458288068569, min = 1, max = 8999999 
-size: 3000, threads:4, time: 0.00256651, tot = 40457246851509, min = 0, max = 8999999 
-size: 3000, threads:8, time: 0.0019129, tot = 40455182434877, min = 0, max = 8999999 
-size: 3000, threads:16, time: 0.00205498, tot = 40454217551744, min = 1, max = 8999999 
-size: 3000, threads:32, time: 0.00279423, tot = 40471070997160, min = 0, max = 8999999 
-size: 4000, threads:1, time: 0.0151264, tot = 127830841939402, min = 1, max = 15999999 
-size: 4000, threads:2, time: 0.00820272, tot = 127836175682097, min = 0, max = 15999998 
-size: 4000, threads:4, time: 0.00477114, tot = 127861135169884, min = 0, max = 15999999 
-size: 4000, threads:8, time: 0.00381, tot = 127836907142107, min = 2, max = 15999997 
-size: 4000, threads:16, time: 0.0028791, tot = 127854271132747, min = 0, max = 15999999 
-size: 4000, threads:32, time: 0.00403671, tot = 127838162081155, min = 0, max = 15999999 
-size: 5000, threads:1, time: 0.022908, tot = 312223411982395, min = 2, max = 24999999 
-size: 5000, threads:2, time: 0.0121477, tot = 312229991732893, min = 0, max = 24999999 
-size: 5000, threads:4, time: 0.00605373, tot = 312125268975696, min = 0, max = 24999999 
-size: 5000, threads:8, time: 0.00580638, tot = 312191138886451, min = 1, max = 24999998 
-size: 5000, threads:16, time: 0.00356822, tot = 312196377634299, min = 1, max = 24999999 
-size: 5000, threads:32, time: 0.00509245, tot = 312143693771704, min = 0, max = 24999999 
-size: 6000, threads:1, time: 0.0326117, tot = 645497530004457, min = 0, max = 35999997 
-size: 6000, threads:2, time: 0.0172878, tot = 645508116894121, min = 4, max = 35999999 
-size: 6000, threads:4, time: 0.00906536, tot = 645615733505423, min = 0, max = 35999997 
-size: 6000, threads:8, time: 0.00683642, tot = 645535621971060, min = 0, max = 35999997 
-size: 6000, threads:16, time: 0.00547558, tot = 645533736991075, min = 0, max = 35999999 
-size: 6000, threads:32, time: 0.0065035, tot = 645616395698086, min = 0, max = 35999999 
-size: 7000, threads:1, time: 0.0436757, tot = 1196468551085385, min = 0, max = 48999999 
-size: 7000, threads:2, time: 0.0226495, tot = 1196544455197614, min = 3, max = 48999999 
-size: 7000, threads:4, time: 0.0123139, tot = 1196714126481948, min = 0, max = 48999995 
-size: 7000, threads:8, time: 0.0065228, tot = 1196532557923914, min = 0, max = 48999998 
-size: 7000, threads:16, time: 0.00647827, tot = 1196566736457268, min = 0, max = 48999999 
-size: 7000, threads:32, time: 0.00802843, tot = 1196518326658583, min = 0, max = 48999998 
-size: 8000, threads:1, time: 0.0571599, tot = 2032794190734320, min = 2, max = 63999998 
-size: 8000, threads:2, time: 0.0295143, tot = 2032961641139331, min = 0, max = 63999999 
-size: 8000, threads:4, time: 0.0152401, tot = 2032963442177998, min = 2, max = 63999998 
-size: 8000, threads:8, time: 0.00860791, tot = 2032850303382788, min = 0, max = 63999999 
-size: 8000, threads:16, time: 0.0079922, tot = 2033025795303911, min = 3, max = 63999999 
-size: 8000, threads:32, time: 0.0105478, tot = 2033240837310542, min = 0, max = 63999998 
-size: 9000, threads:1, time: 0.0703379, tot = 3249555772664155, min = 0, max = 80999998 
-size: 9000, threads:2, time: 0.0416957, tot = 3249452172990139, min = 1, max = 80999999 
-size: 9000, threads:4, time: 0.0180899, tot = 3249567226054307, min = 0, max = 80999999 
-size: 9000, threads:8, time: 0.0102956, tot = 3249954542241749, min = 1, max = 80999998 
-size: 9000, threads:16, time: 0.0120131, tot = 3249431428022816, min = 0, max = 80999997 
-size: 9000, threads:32, time: 0.0119444, tot = 3249880843639249, min = 0, max = 80999998 
-size: 10000, threads:1, time: 0.0845935, tot = 4942303160398528, min = 1, max = 99999998 
-size: 10000, threads:2, time: 0.0437677, tot = 4942142137970349, min = 0, max = 99999999 
-size: 10000, threads:4, time: 0.022625, tot = 4942372419300744, min = 0, max = 99999999 
-size: 10000, threads:8, time: 0.0214986, tot = 4941917140343557, min = 0, max = 99999999 
-size: 10000, threads:16, time: 0.0121543, tot = 4941832697693590, min = 1, max = 99999999 
-size: 10000, threads:32, time: 0.0140326, tot = 4942530757608759, min = 0, max = 99999999 
-size: 1000, threads:1, time: 0.000954027, tot = 499684791423, min = 0, max = 999999 
-size: 1000, threads:2, time: 0.00105463, tot = 499677146559, min = 0, max = 999999 
-size: 1000, threads:4, time: 0.000545254, tot = 499815577713, min = 0, max = 999999 
-size: 1000, threads:8, time: 0.000640206, tot = 499941585595, min = 0, max = 999997 
-size: 1000, threads:16, time: 0.000915512, tot = 500173832216, min = 0, max = 999999 
-size: 1000, threads:32, time: 0.00214604, tot = 500575265211, min = 0, max = 999999 
-size: 2000, threads:1, time: 0.00360665, tot = 7999305908124, min = 2, max = 3999996 
-size: 2000, threads:2, time: 0.00227117, tot = 7999880267204, min = 2, max = 3999999 
-size: 2000, threads:4, time: 0.00150199, tot = 7999603326972, min = 3, max = 3999998 
-size: 2000, threads:8, time: 0.00116218, tot = 7996863167115, min = 2, max = 3999998 
-size: 2000, threads:16, time: 0.00158317, tot = 7999356627467, min = 2, max = 3999999 
-size: 2000, threads:32, time: 0.00263722, tot = 7998076732220, min = 1, max = 3999999 
-size: 3000, threads:1, time: 0.00784385, tot = 40471218650341, min = 1, max = 8999999 
-size: 3000, threads:2, time: 0.00455363, tot = 40449244715286, min = 0, max = 8999999 
-size: 3000, threads:4, time: 0.00278987, tot = 40471149378351, min = 1, max = 8999999 
-size: 3000, threads:8, time: 0.00202043, tot = 40448222460070, min = 1, max = 8999997 
-size: 3000, threads:16, time: 0.0021127, tot = 40468856202184, min = 0, max = 8999998 
-size: 3000, threads:32, time: 0.00268341, tot = 40478737568540, min = 0, max = 8999995 
-size: 4000, threads:1, time: 0.0142653, tot = 127855243195951, min = 0, max = 15999999 
-size: 4000, threads:2, time: 0.00784213, tot = 127842880949114, min = 0, max = 15999999 
-size: 4000, threads:4, time: 0.0044876, tot = 127833399430619, min = 1, max = 15999999 
-size: 4000, threads:8, time: 0.0027574, tot = 127871837925696, min = 2, max = 15999997 
-size: 4000, threads:16, time: 0.00279607, tot = 127823953834444, min = 1, max = 15999998 
-size: 4000, threads:32, time: 0.00368672, tot = 127858573507449, min = 1, max = 15999998 
-size: 5000, threads:1, time: 0.0227, tot = 312166922203111, min = 3, max = 24999999 
-size: 5000, threads:2, time: 0.0121829, tot = 312200942263406, min = 1, max = 24999997 
-size: 5000, threads:4, time: 0.00623488, tot = 312189389113094, min = 0, max = 24999999 
-size: 5000, threads:8, time: 0.00372425, tot = 312183830554385, min = 0, max = 24999998 
-size: 5000, threads:16, time: 0.00369693, tot = 312158440855782, min = 0, max = 24999998 
-size: 5000, threads:32, time: 0.00485145, tot = 312150833163364, min = 0, max = 24999999 
-size: 6000, threads:1, time: 0.0330314, tot = 645505520077383, min = 0, max = 35999998 
-size: 6000, threads:2, time: 0.0312656, tot = 645663168408892, min = 4, max = 35999998 
-size: 6000, threads:4, time: 0.00906552, tot = 645478137023821, min = 0, max = 35999998 
-size: 6000, threads:8, time: 0.00765064, tot = 645558337052487, min = 0, max = 35999997 
-size: 6000, threads:16, time: 0.0105229, tot = 645540531164668, min = 0, max = 35999999 
-size: 6000, threads:32, time: 0.00662799, tot = 645520420618996, min = 0, max = 35999998 
-size: 7000, threads:1, time: 0.0443989, tot = 1196556947375976, min = 2, max = 48999997 
-size: 7000, threads:2, time: 0.0228657, tot = 1196612190988028, min = 0, max = 48999999 
-size: 7000, threads:4, time: 0.0117757, tot = 1196852839467140, min = 0, max = 48999999 
-size: 7000, threads:8, time: 0.00678094, tot = 1196525052624704, min = 1, max = 48999999 
-size: 7000, threads:16, time: 0.00653886, tot = 1196489946141003, min = 0, max = 48999999 
-size: 7000, threads:32, time: 0.00826397, tot = 1196530969204189, min = 1, max = 48999998 
-size: 8000, threads:1, time: 0.057797, tot = 2033151729748124, min = 0, max = 63999998 
-size: 8000, threads:2, time: 0.0296778, tot = 2033037867501269, min = 0, max = 63999998 
-size: 8000, threads:4, time: 0.0154338, tot = 2032860896834311, min = 0, max = 63999999 
-size: 8000, threads:8, time: 0.0143278, tot = 2032514631868154, min = 3, max = 63999998 
-size: 8000, threads:16, time: 0.00804431, tot = 2032887689041010, min = 1, max = 63999999 
-size: 8000, threads:32, time: 0.010678, tot = 2032882121682995, min = 0, max = 63999999 
-size: 9000, threads:1, time: 0.0721252, tot = 3249475136010004, min = 2, max = 80999999 
-size: 9000, threads:2, time: 0.0373216, tot = 3249287977050528, min = 2, max = 80999998 
-size: 9000, threads:4, time: 0.0192096, tot = 3249377419956948, min = 0, max = 80999999 
-size: 9000, threads:8, time: 0.0106007, tot = 3249263341323737, min = 0, max = 80999999 
-size: 9000, threads:16, time: 0.0099166, tot = 3249692664864290, min = 1, max = 80999999 
-size: 9000, threads:32, time: 0.0120906, tot = 3249701143556410, min = 1, max = 80999999 
-size: 10000, threads:1, time: 0.0868213, tot = 4942446640641012, min = 0, max = 99999999 
-size: 10000, threads:2, time: 0.0465339, tot = 4941521277455266, min = 0, max = 99999999 
-size: 10000, threads:4, time: 0.0230329, tot = 4942067756053192, min = 1, max = 99999999 
-size: 10000, threads:8, time: 0.0219301, tot = 4941827895071328, min = 1, max = 99999997 
-size: 10000, threads:16, time: 0.0120515, tot = 4941728855618730, min = 0, max = 99999999 
-size: 10000, threads:32, time: 0.0143328, tot = 4941700162179919, min = 1, max = 99999995 
-size: 1000, threads:1, time: 0.000895296, tot = 500350623460, min = 0, max = 999999 
-size: 1000, threads:2, time: 0.0011432, tot = 499753207971, min = 0, max = 999998 
-size: 1000, threads:4, time: 0.000409571, tot = 499923797540, min = 0, max = 999999 
-size: 1000, threads:8, time: 0.000831186, tot = 500274205800, min = 0, max = 999997 
-size: 1000, threads:16, time: 0.00102118, tot = 500278121783, min = 1, max = 999998 
-size: 1000, threads:32, time: 0.0020931, tot = 500286145419, min = 0, max = 999998 
-size: 2000, threads:1, time: 0.00374331, tot = 7996720936328, min = 1, max = 3999999 
-size: 2000, threads:2, time: 0.0023585, tot = 8001137075845, min = 1, max = 3999998 
-size: 2000, threads:4, time: 0.00128885, tot = 7998551890744, min = 0, max = 3999998 
-size: 2000, threads:8, time: 0.00116647, tot = 8000186988365, min = 0, max = 3999998 
-size: 2000, threads:16, time: 0.00148553, tot = 7998363638139, min = 0, max = 3999999 
-size: 2000, threads:32, time: 0.00320504, tot = 7994504442749, min = 1, max = 3999998 
-size: 3000, threads:1, time: 0.00805552, tot = 40482388947118, min = 0, max = 8999999 
-size: 3000, threads:2, time: 0.00464527, tot = 40477069440930, min = 3, max = 8999999 
-size: 3000, threads:4, time: 0.00254364, tot = 40456747964390, min = 0, max = 8999999 
-size: 3000, threads:8, time: 0.00204906, tot = 40471194027053, min = 0, max = 8999998 
-size: 3000, threads:16, time: 0.00171612, tot = 40446902820684, min = 1, max = 8999999 
-size: 3000, threads:32, time: 0.0030067, tot = 40457887666330, min = 3, max = 8999999 
-size: 4000, threads:1, time: 0.0153922, tot = 127834745899652, min = 1, max = 15999999 
-size: 4000, threads:2, time: 0.00790865, tot = 127832210463955, min = 1, max = 15999996 
-size: 4000, threads:4, time: 0.00694498, tot = 127853788682423, min = 0, max = 15999997 
-size: 4000, threads:8, time: 0.00291679, tot = 127829389802382, min = 1, max = 15999999 
-size: 4000, threads:16, time: 0.00403494, tot = 127859650195706, min = 3, max = 15999999 
-size: 4000, threads:32, time: 0.00420675, tot = 127830465070496, min = 0, max = 15999996 
-size: 5000, threads:1, time: 0.0231793, tot = 312234282112577, min = 0, max = 24999999 
-size: 5000, threads:2, time: 0.0127119, tot = 312207401645144, min = 1, max = 24999999 
-size: 5000, threads:4, time: 0.00614391, tot = 312181762922369, min = 0, max = 24999997 
-size: 5000, threads:8, time: 0.00581496, tot = 312199039098053, min = 0, max = 24999993 
-size: 5000, threads:16, time: 0.00370403, tot = 312119301926732, min = 0, max = 24999999 
-size: 5000, threads:32, time: 0.00507028, tot = 312214881926851, min = 1, max = 24999999 
-size: 6000, threads:1, time: 0.0328287, tot = 645476724801610, min = 1, max = 35999997 
-size: 6000, threads:2, time: 0.0172334, tot = 645482700752666, min = 1, max = 35999996 
-size: 6000, threads:4, time: 0.0088438, tot = 645508755921636, min = 0, max = 35999998 
-size: 6000, threads:8, time: 0.00532499, tot = 645551987941993, min = 0, max = 35999999 
-size: 6000, threads:16, time: 0.00488387, tot = 645494522810772, min = 1, max = 35999999 
-size: 6000, threads:32, time: 0.0069626, tot = 645576536690781, min = 1, max = 35999999 
-size: 7000, threads:1, time: 0.043905, tot = 1196664108361107, min = 0, max = 48999999 
-size: 7000, threads:2, time: 0.022893, tot = 1196419487156095, min = 1, max = 48999999 
-size: 7000, threads:4, time: 0.0115622, tot = 1196656835253060, min = 0, max = 48999999 
-size: 7000, threads:8, time: 0.0109103, tot = 1196628300447451, min = 1, max = 48999999 
-size: 7000, threads:16, time: 0.00627557, tot = 1196538789494281, min = 0, max = 48999999 
-size: 7000, threads:32, time: 0.00868176, tot = 1196460826186610, min = 0, max = 48999999 
-size: 8000, threads:1, time: 0.0577093, tot = 2033106349323101, min = 0, max = 63999997 
-size: 8000, threads:2, time: 0.0296236, tot = 2033100522167988, min = 0, max = 63999999 
-size: 8000, threads:4, time: 0.0153739, tot = 2032858007446645, min = 0, max = 63999999 
-size: 8000, threads:8, time: 0.00849898, tot = 2032959942303810, min = 1, max = 63999999 
-size: 8000, threads:16, time: 0.00780245, tot = 2032945438675395, min = 2, max = 63999997 
-size: 8000, threads:32, time: 0.0107401, tot = 2032782242781151, min = 1, max = 63999999 
-size: 9000, threads:1, time: 0.0706774, tot = 3249492774517945, min = 0, max = 80999994 
-size: 9000, threads:2, time: 0.0363187, tot = 3249128834709150, min = 0, max = 80999997 
-size: 9000, threads:4, time: 0.0189808, tot = 3249588499226792, min = 0, max = 80999994 
-size: 9000, threads:8, time: 0.0150183, tot = 3249572906792533, min = 1, max = 80999998 
-size: 9000, threads:16, time: 0.010093, tot = 3249881759940200, min = 2, max = 80999997 
-size: 9000, threads:32, time: 0.013756, tot = 3249839039962754, min = 0, max = 80999998 
-size: 10000, threads:1, time: 0.0869212, tot = 4942020832412857, min = 0, max = 99999998 
-size: 10000, threads:2, time: 0.0450587, tot = 4942295883556764, min = 1, max = 99999998 
-size: 10000, threads:4, time: 0.0224811, tot = 4941187033278527, min = 0, max = 99999999 
-size: 10000, threads:8, time: 0.0208243, tot = 4941837839223880, min = 3, max = 99999999 
-size: 10000, threads:16, time: 0.0119326, tot = 4942159641415880, min = 0, max = 99999999 
-size: 10000, threads:32, time: 0.0146782, tot = 4941265819048130, min = 2, max = 99999998 
-size: 1000, threads:1, time: 0.00099069, tot = 500217305158, min = 1, max = 999999 
-size: 1000, threads:2, time: 0.00107933, tot = 500271641260, min = 1, max = 999997 
-size: 1000, threads:4, time: 0.000380233, tot = 499964766705, min = 0, max = 999999 
-size: 1000, threads:8, time: 0.000651179, tot = 500158319894, min = 2, max = 999996 
-size: 1000, threads:16, time: 0.000863912, tot = 499560998857, min = 0, max = 999999 
-size: 1000, threads:32, time: 0.00231814, tot = 499644320850, min = 2, max = 999998 
-size: 2000, threads:1, time: 0.00364172, tot = 8000822229089, min = 3, max = 3999996 
-size: 2000, threads:2, time: 0.00234073, tot = 7999061635184, min = 0, max = 3999999 
-size: 2000, threads:4, time: 0.00132007, tot = 7993212659686, min = 0, max = 3999999 
-size: 2000, threads:8, time: 0.00128826, tot = 8001335331517, min = 0, max = 3999999 
-size: 2000, threads:16, time: 0.00139546, tot = 7997533067673, min = 2, max = 3999999 
-size: 2000, threads:32, time: 0.00272118, tot = 7999098419606, min = 0, max = 3999999 
-size: 3000, threads:1, time: 0.00821401, tot = 40468590996111, min = 3, max = 8999999 
-size: 3000, threads:2, time: 0.00486215, tot = 40469216325656, min = 0, max = 8999997 
-size: 3000, threads:4, time: 0.00237506, tot = 40460952366529, min = 1, max = 8999998 
-size: 3000, threads:8, time: 0.0018758, tot = 40461358852440, min = 2, max = 8999998 
-size: 3000, threads:16, time: 0.00215771, tot = 40450470948507, min = 0, max = 8999998 
-size: 3000, threads:32, time: 0.00287273, tot = 40443557185810, min = 0, max = 8999999 
-size: 4000, threads:1, time: 0.0145846, tot = 127885578462682, min = 0, max = 15999999 
-size: 4000, threads:2, time: 0.00795205, tot = 127851764860778, min = 2, max = 15999998 
-size: 4000, threads:4, time: 0.00437789, tot = 127811901061296, min = 0, max = 15999999 
-size: 4000, threads:8, time: 0.00280943, tot = 127861628039429, min = 0, max = 15999999 
-size: 4000, threads:16, time: 0.00292842, tot = 127830445429797, min = 0, max = 15999998 
-size: 4000, threads:32, time: 0.00390189, tot = 127821493284899, min = 0, max = 15999999 
-size: 5000, threads:1, time: 0.0228869, tot = 312139938395367, min = 0, max = 24999999 
-size: 5000, threads:2, time: 0.0122306, tot = 312195157084443, min = 0, max = 24999998 
-size: 5000, threads:4, time: 0.00614549, tot = 312168894932275, min = 2, max = 24999998 
-size: 5000, threads:8, time: 0.00391014, tot = 312236032134948, min = 0, max = 24999997 
-size: 5000, threads:16, time: 0.00530295, tot = 312209806578055, min = 0, max = 24999999 
-size: 5000, threads:32, time: 0.00571087, tot = 312110534417017, min = 2, max = 24999999 
-size: 6000, threads:1, time: 0.032766, tot = 645412161854849, min = 0, max = 35999999 
-size: 6000, threads:2, time: 0.0171264, tot = 645586740670573, min = 1, max = 35999999 
-size: 6000, threads:4, time: 0.0153309, tot = 645593832564894, min = 0, max = 35999999 
-size: 6000, threads:8, time: 0.00822293, tot = 645616771010399, min = 0, max = 35999998 
-size: 6000, threads:16, time: 0.00521213, tot = 645700092907859, min = 1, max = 35999997 
-size: 6000, threads:32, time: 0.00674698, tot = 645626652788115, min = 1, max = 35999997 
-size: 7000, threads:1, time: 0.0439975, tot = 1196510969875931, min = 1, max = 48999998 
-size: 7000, threads:2, time: 0.0227476, tot = 1196463821557181, min = 0, max = 48999999 
-size: 7000, threads:4, time: 0.0118512, tot = 1196646757968874, min = 0, max = 48999996 
-size: 7000, threads:8, time: 0.0110436, tot = 1196459536976915, min = 1, max = 48999997 
-size: 7000, threads:16, time: 0.00650425, tot = 1196670583723265, min = 0, max = 48999999 
-size: 7000, threads:32, time: 0.00875234, tot = 1196588645140019, min = 1, max = 48999999 
-size: 8000, threads:1, time: 0.0584568, tot = 2033031487595783, min = 0, max = 63999999 
-size: 8000, threads:2, time: 0.0304503, tot = 2032826284023372, min = 1, max = 63999998 
-size: 8000, threads:4, time: 0.0153544, tot = 2032711610940654, min = 0, max = 63999997 
-size: 8000, threads:8, time: 0.00844098, tot = 2033013212516215, min = 0, max = 63999999 
-size: 8000, threads:16, time: 0.0079562, tot = 2032973171442802, min = 3, max = 63999999 
-size: 8000, threads:32, time: 0.0101867, tot = 2032711422689935, min = 1, max = 63999999 
-size: 9000, threads:1, time: 0.07197, tot = 3249187196626949, min = 0, max = 80999999 
-size: 9000, threads:2, time: 0.0367943, tot = 3249663001007930, min = 1, max = 80999998 
-size: 9000, threads:4, time: 0.0188623, tot = 3249574176841594, min = 1, max = 80999999 
-size: 9000, threads:8, time: 0.0103958, tot = 3249707785273988, min = 0, max = 80999999 
-size: 9000, threads:16, time: 0.0100979, tot = 3249443143591940, min = 1, max = 80999999 
-size: 9000, threads:32, time: 0.0122693, tot = 3249544484848131, min = 0, max = 80999999 
-size: 10000, threads:1, time: 0.0893159, tot = 4942230211568181, min = 0, max = 99999999 
-size: 10000, threads:2, time: 0.0454158, tot = 4941756848020104, min = 0, max = 99999999 
-size: 10000, threads:4, time: 0.0314384, tot = 4942221963148929, min = 1, max = 99999999 
-size: 10000, threads:8, time: 0.0117337, tot = 4941369023791418, min = 2, max = 99999998 
-size: 10000, threads:16, time: 0.0120626, tot = 4942026534308212, min = 0, max = 99999994 
-size: 10000, threads:32, time: 0.0147681, tot = 4941972515205897, min = 0, max = 99999996 
+size: 1000, threads: 1, time: 0.00103943, tot = 500045481283, min = 2, max = 999999 
+size: 1000, threads: 2, time: 0.00104104, tot = 500106462901, min = 0, max = 999999 
+size: 1000, threads: 4, time: 0.000465617, tot = 500124816625, min = 0, max = 999998 
+size: 1000, threads: 8, time: 0.000631346, tot = 499674870374, min = 0, max = 999999 
+size: 1000, threads: 16, time: 0.00107284, tot = 499610898045, min = 0, max = 999999 
+size: 1000, threads: 32, time: 0.002253, tot = 500244484837, min = 2, max = 999999 
+size: 2000, threads: 1, time: 0.00426707, tot = 7997896465689, min = 0, max = 3999999 
+size: 2000, threads: 2, time: 0.00289635, tot = 7997698298842, min = 1, max = 3999998 
+size: 2000, threads: 4, time: 0.00123545, tot = 7995029332426, min = 0, max = 3999998 
+size: 2000, threads: 8, time: 0.00128271, tot = 8000924898328, min = 1, max = 3999999 
+size: 2000, threads: 16, time: 0.00154841, tot = 8000975309348, min = 2, max = 3999999 
+size: 2000, threads: 32, time: 0.00276411, tot = 7998248892274, min = 0, max = 3999999 
+size: 3000, threads: 1, time: 0.00811587, tot = 40453286828728, min = 1, max = 8999999 
+size: 3000, threads: 2, time: 0.00560349, tot = 40458288068569, min = 1, max = 8999999 
+size: 3000, threads: 4, time: 0.00243515, tot = 40457246851509, min = 0, max = 8999999 
+size: 3000, threads: 8, time: 0.00310689, tot = 40455182434877, min = 0, max = 8999999 
+size: 3000, threads: 16, time: 0.00235278, tot = 40454217551744, min = 1, max = 8999999 
+size: 3000, threads: 32, time: 0.00281664, tot = 40471070997160, min = 0, max = 8999999 
+size: 4000, threads: 1, time: 0.0148961, tot = 127830841939402, min = 1, max = 15999999 
+size: 4000, threads: 2, time: 0.0102372, tot = 127836175682097, min = 0, max = 15999998 
+size: 4000, threads: 4, time: 0.00425052, tot = 127861135169884, min = 0, max = 15999999 
+size: 4000, threads: 8, time: 0.00385228, tot = 127836907142107, min = 2, max = 15999997 
+size: 4000, threads: 16, time: 0.0027604, tot = 127854271132747, min = 0, max = 15999999 
+size: 4000, threads: 32, time: 0.00421512, tot = 127838162081155, min = 0, max = 15999999 
+size: 5000, threads: 1, time: 0.0232179, tot = 312223411982395, min = 2, max = 24999999 
+size: 5000, threads: 2, time: 0.0123865, tot = 312229991732893, min = 0, max = 24999999 
+size: 5000, threads: 4, time: 0.00662597, tot = 312125268975696, min = 0, max = 24999999 
+size: 5000, threads: 8, time: 0.00631156, tot = 312191138886451, min = 1, max = 24999998 
+size: 5000, threads: 16, time: 0.00439354, tot = 312196377634299, min = 1, max = 24999999 
+size: 5000, threads: 32, time: 0.00530801, tot = 312143693771704, min = 0, max = 24999999 
+size: 6000, threads: 1, time: 0.0334735, tot = 645497530004457, min = 0, max = 35999997 
+size: 6000, threads: 2, time: 0.0175529, tot = 645508116894121, min = 4, max = 35999999 
+size: 6000, threads: 4, time: 0.0091009, tot = 645615733505423, min = 0, max = 35999997 
+size: 6000, threads: 8, time: 0.00499618, tot = 645535621971060, min = 0, max = 35999997 
+size: 6000, threads: 16, time: 0.00479589, tot = 645533736991075, min = 0, max = 35999999 
+size: 6000, threads: 32, time: 0.00703749, tot = 645616395698086, min = 0, max = 35999999 
+size: 7000, threads: 1, time: 0.0439965, tot = 1196468551085385, min = 0, max = 48999999 
+size: 7000, threads: 2, time: 0.0227371, tot = 1196544455197614, min = 3, max = 48999999 
+size: 7000, threads: 4, time: 0.0121063, tot = 1196714126481948, min = 0, max = 48999995 
+size: 7000, threads: 8, time: 0.00648517, tot = 1196532557923914, min = 0, max = 48999998 
+size: 7000, threads: 16, time: 0.00653749, tot = 1196566736457268, min = 0, max = 48999999 
+size: 7000, threads: 32, time: 0.00808711, tot = 1196518326658583, min = 0, max = 48999998 
+size: 8000, threads: 1, time: 0.0582646, tot = 2032794190734320, min = 2, max = 63999998 
+size: 8000, threads: 2, time: 0.0296888, tot = 2032961641139331, min = 0, max = 63999999 
+size: 8000, threads: 4, time: 0.0152357, tot = 2032963442177998, min = 2, max = 63999998 
+size: 8000, threads: 8, time: 0.0092533, tot = 2032850303382788, min = 0, max = 63999999 
+size: 8000, threads: 16, time: 0.00850475, tot = 2033025795303911, min = 3, max = 63999999 
+size: 8000, threads: 32, time: 0.0105282, tot = 2033240837310542, min = 0, max = 63999998 
+size: 9000, threads: 1, time: 0.07148, tot = 3249555772664155, min = 0, max = 80999998 
+size: 9000, threads: 2, time: 0.0379567, tot = 3249452172990139, min = 1, max = 80999999 
+size: 9000, threads: 4, time: 0.0191715, tot = 3249567226054307, min = 0, max = 80999999 
+size: 9000, threads: 8, time: 0.0106698, tot = 3249954542241749, min = 1, max = 80999998 
+size: 9000, threads: 16, time: 0.0110817, tot = 3249431428022816, min = 0, max = 80999997 
+size: 9000, threads: 32, time: 0.0123598, tot = 3249880843639249, min = 0, max = 80999998 
+size: 10000, threads: 1, time: 0.0872798, tot = 4942303160398528, min = 1, max = 99999998 
+size: 10000, threads: 2, time: 0.0454225, tot = 4942142137970349, min = 0, max = 99999999 
+size: 10000, threads: 4, time: 0.0224945, tot = 4942372419300744, min = 0, max = 99999999 
+size: 10000, threads: 8, time: 0.0121504, tot = 4941917140343557, min = 0, max = 99999999 
+size: 10000, threads: 16, time: 0.012124, tot = 4941832697693590, min = 1, max = 99999999 
+size: 10000, threads: 32, time: 0.0142768, tot = 4942530757608759, min = 0, max = 99999999 
+size: 1000, threads: 1, time: 0.000960989, tot = 499684791423, min = 0, max = 999999 
+size: 1000, threads: 2, time: 0.00110611, tot = 499677146559, min = 0, max = 999999 
+size: 1000, threads: 4, time: 0.000446751, tot = 499815577713, min = 0, max = 999999 
+size: 1000, threads: 8, time: 0.000464396, tot = 499941585595, min = 0, max = 999997 
+size: 1000, threads: 16, time: 0.00108256, tot = 500173832216, min = 0, max = 999999 
+size: 1000, threads: 32, time: 0.00241091, tot = 500575265211, min = 0, max = 999999 
+size: 2000, threads: 1, time: 0.00351293, tot = 7999305908124, min = 2, max = 3999996 
+size: 2000, threads: 2, time: 0.00245192, tot = 7999880267204, min = 2, max = 3999999 
+size: 2000, threads: 4, time: 0.00144219, tot = 7999603326972, min = 3, max = 3999998 
+size: 2000, threads: 8, time: 0.00127397, tot = 7996863167115, min = 2, max = 3999998 
+size: 2000, threads: 16, time: 0.00142998, tot = 7999356627467, min = 2, max = 3999999 
+size: 2000, threads: 32, time: 0.00277028, tot = 7998076732220, min = 1, max = 3999999 
+size: 3000, threads: 1, time: 0.00807955, tot = 40471218650341, min = 1, max = 8999999 
+size: 3000, threads: 2, time: 0.00472037, tot = 40449244715286, min = 0, max = 8999999 
+size: 3000, threads: 4, time: 0.00283314, tot = 40471149378351, min = 1, max = 8999999 
+size: 3000, threads: 8, time: 0.00220893, tot = 40448222460070, min = 1, max = 8999997 
+size: 3000, threads: 16, time: 0.00503693, tot = 40468856202184, min = 0, max = 8999998 
+size: 3000, threads: 32, time: 0.00305292, tot = 40478737568540, min = 0, max = 8999995 
+size: 4000, threads: 1, time: 0.0145712, tot = 127855243195951, min = 0, max = 15999999 
+size: 4000, threads: 2, time: 0.0144379, tot = 127842880949114, min = 0, max = 15999999 
+size: 4000, threads: 4, time: 0.00467489, tot = 127833399430619, min = 1, max = 15999999 
+size: 4000, threads: 8, time: 0.00396433, tot = 127871837925696, min = 2, max = 15999997 
+size: 4000, threads: 16, time: 0.00299734, tot = 127823953834444, min = 1, max = 15999998 
+size: 4000, threads: 32, time: 0.00373802, tot = 127858573507449, min = 1, max = 15999998 
+size: 5000, threads: 1, time: 0.0233239, tot = 312166922203111, min = 3, max = 24999999 
+size: 5000, threads: 2, time: 0.0124977, tot = 312200942263406, min = 1, max = 24999997 
+size: 5000, threads: 4, time: 0.00673999, tot = 312189389113094, min = 0, max = 24999999 
+size: 5000, threads: 8, time: 0.00409916, tot = 312183830554385, min = 0, max = 24999998 
+size: 5000, threads: 16, time: 0.00396121, tot = 312158440855782, min = 0, max = 24999998 
+size: 5000, threads: 32, time: 0.00504537, tot = 312150833163364, min = 0, max = 24999999 
+size: 6000, threads: 1, time: 0.0327335, tot = 645505520077383, min = 0, max = 35999998 
+size: 6000, threads: 2, time: 0.017281, tot = 645663168408892, min = 4, max = 35999998 
+size: 6000, threads: 4, time: 0.00977627, tot = 645478137023821, min = 0, max = 35999998 
+size: 6000, threads: 8, time: 0.00521619, tot = 645558337052487, min = 0, max = 35999997 
+size: 6000, threads: 16, time: 0.00562251, tot = 645540531164668, min = 0, max = 35999999 
+size: 6000, threads: 32, time: 0.00662111, tot = 645520420618996, min = 0, max = 35999998 
+size: 7000, threads: 1, time: 0.0442837, tot = 1196556947375976, min = 2, max = 48999997 
+size: 7000, threads: 2, time: 0.0245598, tot = 1196612190988028, min = 0, max = 48999999 
+size: 7000, threads: 4, time: 0.0115721, tot = 1196852839467140, min = 0, max = 48999999 
+size: 7000, threads: 8, time: 0.00663494, tot = 1196525052624704, min = 1, max = 48999999 
+size: 7000, threads: 16, time: 0.00676944, tot = 1196489946141003, min = 0, max = 48999999 
+size: 7000, threads: 32, time: 0.00864171, tot = 1196530969204189, min = 1, max = 48999998 
+size: 8000, threads: 1, time: 0.0579058, tot = 2033151729748124, min = 0, max = 63999998 
+size: 8000, threads: 2, time: 0.0415919, tot = 2033037867501269, min = 0, max = 63999998 
+size: 8000, threads: 4, time: 0.0152964, tot = 2032860896834311, min = 0, max = 63999999 
+size: 8000, threads: 8, time: 0.00855553, tot = 2032514631868154, min = 3, max = 63999998 
+size: 8000, threads: 16, time: 0.00929693, tot = 2032887689041010, min = 1, max = 63999999 
+size: 8000, threads: 32, time: 0.0102773, tot = 2032882121682995, min = 0, max = 63999999 
+size: 9000, threads: 1, time: 0.070917, tot = 3249475136010004, min = 2, max = 80999999 
+size: 9000, threads: 2, time: 0.0366055, tot = 3249287977050528, min = 2, max = 80999998 
+size: 9000, threads: 4, time: 0.0188342, tot = 3249377419956948, min = 0, max = 80999999 
+size: 9000, threads: 8, time: 0.0127369, tot = 3249263341323737, min = 0, max = 80999999 
+size: 9000, threads: 16, time: 0.0100191, tot = 3249692664864290, min = 1, max = 80999999 
+size: 9000, threads: 32, time: 0.0126063, tot = 3249701143556410, min = 1, max = 80999999 
+size: 10000, threads: 1, time: 0.0866048, tot = 4942446640641012, min = 0, max = 99999999 
+size: 10000, threads: 2, time: 0.044592, tot = 4941521277455266, min = 0, max = 99999999 
+size: 10000, threads: 4, time: 0.0226946, tot = 4942067756053192, min = 1, max = 99999999 
+size: 10000, threads: 8, time: 0.0206469, tot = 4941827895071328, min = 1, max = 99999997 
+size: 10000, threads: 16, time: 0.0131269, tot = 4941728855618730, min = 0, max = 99999999 
+size: 10000, threads: 32, time: 0.014877, tot = 4941700162179919, min = 1, max = 99999995 
+size: 1000, threads: 1, time: 0.00105365, tot = 500350623460, min = 0, max = 999999 
+size: 1000, threads: 2, time: 0.0011737, tot = 499753207971, min = 0, max = 999998 
+size: 1000, threads: 4, time: 0.000450403, tot = 499923797540, min = 0, max = 999999 
+size: 1000, threads: 8, time: 0.000704156, tot = 500274205800, min = 0, max = 999997 
+size: 1000, threads: 16, time: 0.00218112, tot = 500278121783, min = 1, max = 999998 
+size: 1000, threads: 32, time: 0.00244659, tot = 500286145419, min = 0, max = 999998 
+size: 2000, threads: 1, time: 0.0037252, tot = 7996720936328, min = 1, max = 3999999 
+size: 2000, threads: 2, time: 0.00240466, tot = 8001137075845, min = 1, max = 3999998 
+size: 2000, threads: 4, time: 0.00142765, tot = 7998551890744, min = 0, max = 3999998 
+size: 2000, threads: 8, time: 0.00131635, tot = 8000186988365, min = 0, max = 3999998 
+size: 2000, threads: 16, time: 0.00149934, tot = 7998363638139, min = 0, max = 3999999 
+size: 2000, threads: 32, time: 0.00280899, tot = 7994504442749, min = 1, max = 3999998 
+size: 3000, threads: 1, time: 0.00810008, tot = 40482388947118, min = 0, max = 8999999 
+size: 3000, threads: 2, time: 0.0049436, tot = 40477069440930, min = 3, max = 8999999 
+size: 3000, threads: 4, time: 0.00290957, tot = 40456747964390, min = 0, max = 8999999 
+size: 3000, threads: 8, time: 0.00194419, tot = 40471194027053, min = 0, max = 8999998 
+size: 3000, threads: 16, time: 0.00196772, tot = 40446902820684, min = 1, max = 8999999 
+size: 3000, threads: 32, time: 0.00285901, tot = 40457887666330, min = 3, max = 8999999 
+size: 4000, threads: 1, time: 0.0155223, tot = 127834745899652, min = 1, max = 15999999 
+size: 4000, threads: 2, time: 0.00805244, tot = 127832210463955, min = 1, max = 15999996 
+size: 4000, threads: 4, time: 0.00498038, tot = 127853788682423, min = 0, max = 15999997 
+size: 4000, threads: 8, time: 0.0026747, tot = 127829389802382, min = 1, max = 15999999 
+size: 4000, threads: 16, time: 0.00285663, tot = 127859650195706, min = 3, max = 15999999 
+size: 4000, threads: 32, time: 0.00378613, tot = 127830465070496, min = 0, max = 15999996 
+size: 5000, threads: 1, time: 0.0227972, tot = 312234282112577, min = 0, max = 24999999 
+size: 5000, threads: 2, time: 0.0182173, tot = 312207401645144, min = 1, max = 24999999 
+size: 5000, threads: 4, time: 0.00660097, tot = 312181762922369, min = 0, max = 24999997 
+size: 5000, threads: 8, time: 0.00392147, tot = 312199039098053, min = 0, max = 24999993 
+size: 5000, threads: 16, time: 0.00443343, tot = 312119301926732, min = 0, max = 24999999 
+size: 5000, threads: 32, time: 0.00523006, tot = 312214881926851, min = 1, max = 24999999 
+size: 6000, threads: 1, time: 0.0326919, tot = 645476724801610, min = 1, max = 35999997 
+size: 6000, threads: 2, time: 0.0192089, tot = 645482700752666, min = 1, max = 35999996 
+size: 6000, threads: 4, time: 0.00915623, tot = 645508755921636, min = 0, max = 35999998 
+size: 6000, threads: 8, time: 0.00543204, tot = 645551987941993, min = 0, max = 35999999 
+size: 6000, threads: 16, time: 0.00477197, tot = 645494522810772, min = 1, max = 35999999 
+size: 6000, threads: 32, time: 0.00723661, tot = 645576536690781, min = 1, max = 35999999 
+size: 7000, threads: 1, time: 0.0445739, tot = 1196664108361107, min = 0, max = 48999999 
+size: 7000, threads: 2, time: 0.0232937, tot = 1196419487156095, min = 1, max = 48999999 
+size: 7000, threads: 4, time: 0.0124307, tot = 1196656835253060, min = 0, max = 48999999 
+size: 7000, threads: 8, time: 0.00661797, tot = 1196628300447451, min = 1, max = 48999999 
+size: 7000, threads: 16, time: 0.00785903, tot = 1196538789494281, min = 0, max = 48999999 
+size: 7000, threads: 32, time: 0.00826156, tot = 1196460826186610, min = 0, max = 48999999 
+size: 8000, threads: 1, time: 0.0599715, tot = 2033106349323101, min = 0, max = 63999997 
+size: 8000, threads: 2, time: 0.0299557, tot = 2033100522167988, min = 0, max = 63999999 
+size: 8000, threads: 4, time: 0.015214, tot = 2032858007446645, min = 0, max = 63999999 
+size: 8000, threads: 8, time: 0.00861458, tot = 2032959942303810, min = 1, max = 63999999 
+size: 8000, threads: 16, time: 0.00846796, tot = 2032945438675395, min = 2, max = 63999997 
+size: 8000, threads: 32, time: 0.00970422, tot = 2032782242781151, min = 1, max = 63999999 
+size: 9000, threads: 1, time: 0.0718511, tot = 3249492774517945, min = 0, max = 80999994 
+size: 9000, threads: 2, time: 0.0367483, tot = 3249128834709150, min = 0, max = 80999997 
+size: 9000, threads: 4, time: 0.0185386, tot = 3249588499226792, min = 0, max = 80999994 
+size: 9000, threads: 8, time: 0.0180752, tot = 3249572906792533, min = 1, max = 80999998 
+size: 9000, threads: 16, time: 0.0140876, tot = 3249881759940200, min = 2, max = 80999997 
+size: 9000, threads: 32, time: 0.0127473, tot = 3249839039962754, min = 0, max = 80999998 
+size: 10000, threads: 1, time: 0.0871203, tot = 4942020832412857, min = 0, max = 99999998 
+size: 10000, threads: 2, time: 0.0453295, tot = 4942295883556764, min = 1, max = 99999998 
+size: 10000, threads: 4, time: 0.0243033, tot = 4941187033278527, min = 0, max = 99999999 
+size: 10000, threads: 8, time: 0.0169827, tot = 4941837839223880, min = 3, max = 99999999 
+size: 10000, threads: 16, time: 0.0173613, tot = 4942159641415880, min = 0, max = 99999999 
+size: 10000, threads: 32, time: 0.0138814, tot = 4941265819048130, min = 2, max = 99999998 
+size: 1000, threads: 1, time: 0.00102125, tot = 500217305158, min = 1, max = 999999 
+size: 1000, threads: 2, time: 0.00113635, tot = 500271641260, min = 1, max = 999997 
+size: 1000, threads: 4, time: 0.000622832, tot = 499964766705, min = 0, max = 999999 
+size: 1000, threads: 8, time: 0.000587312, tot = 500158319894, min = 2, max = 999996 
+size: 1000, threads: 16, time: 0.00115576, tot = 499560998857, min = 0, max = 999999 
+size: 1000, threads: 32, time: 0.00221443, tot = 499644320850, min = 2, max = 999998 
+size: 2000, threads: 1, time: 0.0037176, tot = 8000822229089, min = 3, max = 3999996 
+size: 2000, threads: 2, time: 0.00272276, tot = 7999061635184, min = 0, max = 3999999 
+size: 2000, threads: 4, time: 0.00126699, tot = 7993212659686, min = 0, max = 3999999 
+size: 2000, threads: 8, time: 0.00121152, tot = 8001335331517, min = 0, max = 3999999 
+size: 2000, threads: 16, time: 0.00149726, tot = 7997533067673, min = 2, max = 3999999 
+size: 2000, threads: 32, time: 0.00224158, tot = 7999098419606, min = 0, max = 3999999 
+size: 3000, threads: 1, time: 0.00818283, tot = 40468590996111, min = 3, max = 8999999 
+size: 3000, threads: 2, time: 0.00470207, tot = 40469216325656, min = 0, max = 8999997 
+size: 3000, threads: 4, time: 0.00358692, tot = 40460952366529, min = 1, max = 8999998 
+size: 3000, threads: 8, time: 0.00188548, tot = 40461358852440, min = 2, max = 8999998 
+size: 3000, threads: 16, time: 0.00224294, tot = 40450470948507, min = 0, max = 8999998 
+size: 3000, threads: 32, time: 0.00274615, tot = 40443557185810, min = 0, max = 8999999 
+size: 4000, threads: 1, time: 0.0156145, tot = 127885578462682, min = 0, max = 15999999 
+size: 4000, threads: 2, time: 0.00817654, tot = 127851764860778, min = 2, max = 15999998 
+size: 4000, threads: 4, time: 0.00468342, tot = 127811901061296, min = 0, max = 15999999 
+size: 4000, threads: 8, time: 0.00449641, tot = 127861628039429, min = 0, max = 15999999 
+size: 4000, threads: 16, time: 0.00276435, tot = 127830445429797, min = 0, max = 15999998 
+size: 4000, threads: 32, time: 0.00423466, tot = 127821493284899, min = 0, max = 15999999 
+size: 5000, threads: 1, time: 0.0230197, tot = 312139938395367, min = 0, max = 24999999 
+size: 5000, threads: 2, time: 0.0124046, tot = 312195157084443, min = 0, max = 24999998 
+size: 5000, threads: 4, time: 0.00679709, tot = 312168894932275, min = 2, max = 24999998 
+size: 5000, threads: 8, time: 0.00588798, tot = 312236032134948, min = 0, max = 24999997 
+size: 5000, threads: 16, time: 0.00423373, tot = 312209806578055, min = 0, max = 24999999 
+size: 5000, threads: 32, time: 0.00570379, tot = 312110534417017, min = 2, max = 24999999 
+size: 6000, threads: 1, time: 0.03333, tot = 645412161854849, min = 0, max = 35999999 
+size: 6000, threads: 2, time: 0.0174429, tot = 645586740670573, min = 1, max = 35999999 
+size: 6000, threads: 4, time: 0.0092813, tot = 645593832564894, min = 0, max = 35999999 
+size: 6000, threads: 8, time: 0.00711575, tot = 645616771010399, min = 0, max = 35999998 
+size: 6000, threads: 16, time: 0.0082072, tot = 645700092907859, min = 1, max = 35999997 
+size: 6000, threads: 32, time: 0.0067013, tot = 645626652788115, min = 1, max = 35999997 
+size: 7000, threads: 1, time: 0.0450261, tot = 1196510969875931, min = 1, max = 48999998 
+size: 7000, threads: 2, time: 0.024507, tot = 1196463821557181, min = 0, max = 48999999 
+size: 7000, threads: 4, time: 0.012511, tot = 1196646757968874, min = 0, max = 48999996 
+size: 7000, threads: 8, time: 0.0094766, tot = 1196459536976915, min = 1, max = 48999997 
+size: 7000, threads: 16, time: 0.00663424, tot = 1196670583723265, min = 0, max = 48999999 
+size: 7000, threads: 32, time: 0.00891863, tot = 1196588645140019, min = 1, max = 48999999 
+size: 8000, threads: 1, time: 0.0581591, tot = 2033031487595783, min = 0, max = 63999999 
+size: 8000, threads: 2, time: 0.0308082, tot = 2032826284023372, min = 1, max = 63999998 
+size: 8000, threads: 4, time: 0.015709, tot = 2032711610940654, min = 0, max = 63999997 
+size: 8000, threads: 8, time: 0.0142767, tot = 2033013212516215, min = 0, max = 63999999 
+size: 8000, threads: 16, time: 0.0101364, tot = 2032973171442802, min = 3, max = 63999999 
+size: 8000, threads: 32, time: 0.0107032, tot = 2032711422689935, min = 1, max = 63999999 
+size: 9000, threads: 1, time: 0.0709212, tot = 3249187196626949, min = 0, max = 80999999 
+size: 9000, threads: 2, time: 0.0363125, tot = 3249663001007930, min = 1, max = 80999998 
+size: 9000, threads: 4, time: 0.0195903, tot = 3249574176841594, min = 1, max = 80999999 
+size: 9000, threads: 8, time: 0.0108216, tot = 3249707785273988, min = 0, max = 80999999 
+size: 9000, threads: 16, time: 0.0106237, tot = 3249443143591940, min = 1, max = 80999999 
+size: 9000, threads: 32, time: 0.0127594, tot = 3249544484848131, min = 0, max = 80999999 
+size: 10000, threads: 1, time: 0.0871526, tot = 4942230211568181, min = 0, max = 99999999 
+size: 10000, threads: 2, time: 0.0515976, tot = 4941756848020104, min = 0, max = 99999999 
+size: 10000, threads: 4, time: 0.0223964, tot = 4942221963148929, min = 1, max = 99999999 
+size: 10000, threads: 8, time: 0.0190716, tot = 4941369023791418, min = 2, max = 99999998 
+size: 10000, threads: 16, time: 0.0128598, tot = 4942026534308212, min = 0, max = 99999994 
+size: 10000, threads: 32, time: 0.0135818, tot = 4941972515205897, min = 0, max = 99999996 
+size: 1000, threads: 1, time: 0.000951165, tot = 499891173999, min = 2, max = 999997 
+size: 1000, threads: 2, time: 0.00116643, tot = 500188729695, min = 0, max = 999998 
+size: 1000, threads: 4, time: 0.000751622, tot = 500046309083, min = 0, max = 999999 
+size: 1000, threads: 8, time: 0.00070892, tot = 499931706528, min = 1, max = 999998 
+size: 1000, threads: 16, time: 0.000810287, tot = 499585126026, min = 0, max = 999999 
+size: 1000, threads: 32, time: 0.00203222, tot = 500301018567, min = 1, max = 999998 
+size: 2000, threads: 1, time: 0.00375116, tot = 7995116764712, min = 2, max = 3999999 
+size: 2000, threads: 2, time: 0.00388219, tot = 7993866386551, min = 0, max = 3999999 
+size: 2000, threads: 4, time: 0.00164224, tot = 7996886353348, min = 1, max = 3999999 
+size: 2000, threads: 8, time: 0.00117019, tot = 7997892480503, min = 3, max = 3999999 
+size: 2000, threads: 16, time: 0.00123186, tot = 8001227063409, min = 0, max = 3999999 
+size: 2000, threads: 32, time: 0.00286663, tot = 7998251822165, min = 2, max = 3999999 
+size: 3000, threads: 1, time: 0.00810332, tot = 40449752223457, min = 0, max = 8999998 
+size: 3000, threads: 2, time: 0.00825009, tot = 40461976643027, min = 0, max = 8999999 
+size: 3000, threads: 4, time: 0.00266841, tot = 40446172624243, min = 0, max = 8999999 
+size: 3000, threads: 8, time: 0.00232081, tot = 40472291788339, min = 0, max = 8999998 
+size: 3000, threads: 16, time: 0.00252538, tot = 40474672569879, min = 0, max = 8999999 
+size: 3000, threads: 32, time: 0.00276734, tot = 40459897093160, min = 1, max = 8999999 
+size: 4000, threads: 1, time: 0.0147478, tot = 127853753985034, min = 1, max = 15999999 
+size: 4000, threads: 2, time: 0.00886492, tot = 127860488323662, min = 1, max = 15999999 
+size: 4000, threads: 4, time: 0.00406153, tot = 127842899335767, min = 1, max = 15999999 
+size: 4000, threads: 8, time: 0.00409509, tot = 127805765005950, min = 1, max = 15999999 
+size: 4000, threads: 16, time: 0.00287466, tot = 127853150847524, min = 2, max = 15999999 
+size: 4000, threads: 32, time: 0.00401284, tot = 127836368807400, min = 0, max = 15999999 
+size: 5000, threads: 1, time: 0.0229557, tot = 312158781475331, min = 0, max = 24999999 
+size: 5000, threads: 2, time: 0.0128185, tot = 312211564004111, min = 0, max = 24999999 
+size: 5000, threads: 4, time: 0.00667764, tot = 312249031285719, min = 1, max = 24999998 
+size: 5000, threads: 8, time: 0.00480311, tot = 312166760019446, min = 0, max = 24999999 
+size: 5000, threads: 16, time: 0.00868802, tot = 312163287815090, min = 0, max = 24999998 
+size: 5000, threads: 32, time: 0.0049538, tot = 312173016322393, min = 0, max = 24999998 
+size: 6000, threads: 1, time: 0.0327859, tot = 645541514673360, min = 1, max = 35999998 
+size: 6000, threads: 2, time: 0.0179726, tot = 645472686982249, min = 1, max = 35999999 
+size: 6000, threads: 4, time: 0.00961126, tot = 645600843423365, min = 0, max = 35999998 
+size: 6000, threads: 8, time: 0.00549618, tot = 645530198002967, min = 0, max = 35999998 
+size: 6000, threads: 16, time: 0.00535333, tot = 645542847188675, min = 0, max = 35999997 
+size: 6000, threads: 32, time: 0.00705559, tot = 645452197118023, min = 0, max = 35999999 
+size: 7000, threads: 1, time: 0.0441474, tot = 1196666978848610, min = 0, max = 48999997 
+size: 7000, threads: 2, time: 0.0233071, tot = 1196726519301316, min = 2, max = 48999998 
+size: 7000, threads: 4, time: 0.0122123, tot = 1196714286911602, min = 2, max = 48999999 
+size: 7000, threads: 8, time: 0.00709946, tot = 1196683378409077, min = 0, max = 48999999 
+size: 7000, threads: 16, time: 0.0065471, tot = 1196367752347721, min = 0, max = 48999998 
+size: 7000, threads: 32, time: 0.00863534, tot = 1196515702603311, min = 1, max = 48999999 
+size: 8000, threads: 1, time: 0.0585483, tot = 2032901558769386, min = 0, max = 63999999 
+size: 8000, threads: 2, time: 0.0303699, tot = 2032653179929342, min = 1, max = 63999999 
+size: 8000, threads: 4, time: 0.0156046, tot = 2033090124912806, min = 1, max = 63999998 
+size: 8000, threads: 8, time: 0.0140951, tot = 2032925962664757, min = 0, max = 63999999 
+size: 8000, threads: 16, time: 0.00934393, tot = 2033108485114737, min = 0, max = 63999997 
+size: 8000, threads: 32, time: 0.01075, tot = 2032938231936375, min = 0, max = 63999999 
+size: 9000, threads: 1, time: 0.0715433, tot = 3249335024015640, min = 0, max = 80999999 
+size: 9000, threads: 2, time: 0.0365662, tot = 3249773377837914, min = 0, max = 80999999 
+size: 9000, threads: 4, time: 0.0214186, tot = 3249768046933336, min = 1, max = 80999999 
+size: 9000, threads: 8, time: 0.0115144, tot = 3249481846030624, min = 0, max = 80999999 
+size: 9000, threads: 16, time: 0.0103082, tot = 3249496393561520, min = 4, max = 80999998 
+size: 9000, threads: 32, time: 0.0120848, tot = 3249768890901106, min = 0, max = 80999999 
+size: 10000, threads: 1, time: 0.0870564, tot = 4942514790472423, min = 0, max = 99999999 
+size: 10000, threads: 2, time: 0.0447163, tot = 4941480512079291, min = 0, max = 99999999 
+size: 10000, threads: 4, time: 0.0245579, tot = 4942045652100230, min = 1, max = 99999999 
+size: 10000, threads: 8, time: 0.0161852, tot = 4942163210600371, min = 7, max = 99999999 
+size: 10000, threads: 16, time: 0.0125004, tot = 4941521528511928, min = 1, max = 99999999 
+size: 10000, threads: 32, time: 0.0144683, tot = 4941533560598234, min = 2, max = 99999996 

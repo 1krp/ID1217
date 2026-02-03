@@ -14,30 +14,19 @@
 double start_time, end_time;
 #include <stdlib.h>
 #include <stdio.h>
-#define MAXSIZE 10000  /* maximum matrix size */
-#define MAXWORKERS 16   /* maximum number of workers */
 #define MAXLOOP 5
-#define LINEAR 1
 #define SPLITTHRESHOLDMAX 10000
-int numThreads;
+
 int size; 
 int loop;
 int splitterThreshold;
 int taskCount;
-
-
- 
 double start_time, end_time; /* start and end times */
-int size;  /* assume size is multiple of numWorkers */
-
 int* array;
-int loop;
+
 void quickSort(int *org, int start, int end);
 int partition(int *org, int start, int end);
 int* randomArray(int size);
-
-/*  shared variable  */
-
 
 void quickSort(int *org, int start, int end) {
     if (end <= start) {
@@ -89,13 +78,9 @@ void printArray(int arr[], int size) {
     printf("]\n");
 }
 
-
-/* read command line, initialize, and create threads */
 int main(int argc, char *argv[]) {
-    int i, j, linExp;
-    
+    int i, j;
     int numberOfThreads[] = {1,2,4,8,16}; 
-    /* initialize mutex and condition variable */
     omp_set_dynamic(0);     // Explicitly disable dynamic teams
 
     loop = (argc > 1)? atoi(argv[1]) : MAXLOOP;
@@ -104,11 +89,11 @@ int main(int argc, char *argv[]) {
     splitterThreshold = (argc > 1)? atoi(argv[2]) : SPLITTHRESHOLDMAX;
     if (splitterThreshold > SPLITTHRESHOLDMAX) splitterThreshold = SPLITTHRESHOLDMAX;
 
-    int arraySize[] = {5000000};
+    int arraySize[] = {1000000,2000000,3000000,4000000,5000000,6000000,7000000,8000000,9000000,10000000};
 
     for(int l = 0; l < loop; l++) {
         for (int a = 0; a < 5; a++) { //threads
-            for (int b = 0; b < 1; b++) { //sizes
+            for (int b = 0; b < 10; b++) { //sizes
 
                 omp_set_num_threads(numberOfThreads[a]);
                 size = arraySize[b];
@@ -146,13 +131,7 @@ int main(int argc, char *argv[]) {
                 #else
                     printf("%d, %d, %g\n", size, numberOfThreads[a], end_time - start_time);
                 #endif
-                
-
             }
         } 
     }
 }
-
-/* Each worker sums the values in one strip of the matrix.
-   After a barrier, worker(0) computes and prints the total */
-

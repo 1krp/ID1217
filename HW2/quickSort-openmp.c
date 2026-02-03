@@ -1,14 +1,4 @@
-/* matrix summation using pthreads
 
-   features: uses a barrier; the Worker[0] computes
-             the total sum from partial sums computed by Workers
-             and prints the total sum to the standard output
-
-   usage under Linux:
-     gcc matrixSum.c -lpthread
-     a.out size numWorkers
-
-*/
 #include <omp.h>
 #include <limits.h>
 double start_time, end_time;
@@ -22,17 +12,14 @@ double start_time, end_time;
 int numThreads;
 int size; 
 int loop;
-
+#ifdef DEBUG
 int taskCount;
-
-
- 
+#endif
 double start_time, end_time; /* start and end times */
 int size;  /* assume size is multiple of numWorkers */
 
 int* array;
 int loop;
-/*  shared variable  */
 int partition(int *org, int start, int end) {
     int pivot = org[end];
     int i = start -1;
@@ -115,7 +102,4 @@ start_time = omp_get_wtime();
   #endif
   printf("numThreads: %d\n", numThreads);
 }
-
-/* Each worker sums the values in one strip of the matrix.
-   After a barrier, worker(0) computes and prints the total */
 

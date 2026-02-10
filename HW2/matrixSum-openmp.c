@@ -76,7 +76,8 @@ int main(int argc, char *argv[]) {
             actualWorkers = omp_get_num_threads();
         }
           end_time = omp_get_wtime();
-          printf("size: %d, threads: %d, time: %g, tot = %lu, min = %d, max = %d \n", size, actualWorkers, end_time - start_time, total, matrixMin, matrixMax);
+          printf("size: %d, threads: %d, time: %g, tot = %lu, min = %d, max = %d \n",
+                   size, actualWorkers, end_time - start_time, total, matrixMin, matrixMax);
     }
   }
 }

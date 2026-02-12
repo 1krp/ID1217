@@ -9,6 +9,7 @@
 #include <sys/time.h>
 #include <semaphore.h>
 #include <unistd.h>
+#include <errno.h>
 #define MAXWORMS 1000
 #define MAXBIRDS 15
 
@@ -25,22 +26,25 @@ void *babyBird(void *arg){
     long myid = (long) arg;
     while(1){
         sem_wait(&eatSem);
-        printf("Baby bird %ld is checking for worms.\n", (long) arg);
-       // printf("worms trywait %d \n", sem_trywait(&worms));
-        if(sem_trywait(&worms) == 0){
-            // Acquierd
-            printf("Baby bird %ld is eating a worm.\n", (long) arg);
+        printf("Baby bird %ld is checking for worms.\n", myid);
+
+        if(sem_trywait(&worms)==0){
+            //Acquierd
+            printf("Baby bird %ld is eating a worm.\n", myid);
             wormsEaten[myid]++;
-            sem_post(&eatSem);
-            printf("Baby bird %ld is sleeping.\n", (long) arg);
-            sleep(rand() % 2 + 1);
+            sem_post(&eatSem); 
         } else {
-            printf("Baby bird %ld found that there are no worms, chirps loudly.\n", (long) arg);
-            sem_post(&chirp);
-            sem_post(&eatSem);
-            printf("Baby bird %ld is sleeping.\n", (long) arg);
-            sleep(rand() % 1 + 1);
+            if (errno == EAGAIN) {
+                printf("Baby bird %ld found that there are no worms, chirps loudly.\n", myid);
+                sem_post(&chirp);
+                sem_post(&eatSem);
+            } else {
+                // trywait error
+                perror("sem_trywait");
+            }
         }
+        printf("Baby bird %ld is sleeping.\n", myid);
+        sleep(rand() % 2 + 1);      
     }
 };
 

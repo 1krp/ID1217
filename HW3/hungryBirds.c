@@ -37,7 +37,7 @@ void *babyBird(void *arg){
             if (errno == EAGAIN) {
                 printf("Baby bird %ld found that there are no worms, chirps loudly.\n", myid);
                 sem_post(&chirp);
-                sem_post(&eatSem);
+
             } else {
                 // trywait error
                 perror("sem_trywait");
@@ -51,7 +51,7 @@ void *babyBird(void *arg){
 void *parentBird(void *){
     while(1){
         sem_wait(&chirp);
-        sem_wait(&eatSem);
+
         
         for(int i = 0; i < numWorms; i++){
             sem_post(&worms);

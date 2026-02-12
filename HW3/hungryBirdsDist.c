@@ -49,11 +49,12 @@ void *parentBird(void *){
     while(1){
         sem_wait(&chirp);
         sem_wait(&eatSem);
+        printf("round nr = %d\n", rCounter);
         for (int i = 1; i < numBabyBirds+1; i++) {
             printf("bird %d [%d worms]\n",i, wormsEaten[i]);
         }
         
-        printf("round nr = %d\n", rCounter);
+        
         rCounter++;
         for(int i = 0; i < numWorms; i++){
             sem_post(&worms);

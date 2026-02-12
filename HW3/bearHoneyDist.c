@@ -63,13 +63,13 @@ void *bear(void *){
         }
         
         //printf("Bear ate %d units of honey.\n",capHoney);
-        
+         if(rCounter > 15){
+            exit(0);
+        }
         printf("round nr = %d\n", rCounter);
         rCounter++;
 
-        if(rCounter > 15){
-            exit(0);
-        }
+       
         //printf("honey distribuition \n");
         for (int i = 1; i < numBees+1; i++) {
             printf("[bee %d : %d honey]\n",i, honeyProduced[i]);

@@ -1,27 +1,22 @@
-public class refuleStationMonitor {
-    private int nitrogenLevel;
-    private int quantumLevel;
-    private final int dockingSlots = 6;
-    private int occupiedSlots = 0;
-
-    public synchronized void getFule(int N, int Q) throws InterruptedException {
-        while (occupiedSlots == dockingSlots || nitrogenLevel < N || quantumLevel <= Q){
-            wait();
-        }
-        
-        occupiedSlots++;
-
-
-    }
-    public synchronized void depositFule() {
-
-    }
-
-
-
-}   
-
 
 public static void main(String[] args){
-
+    refuelStationMonitor refeulStation = new refuelStationMonitor(100,100,100,100,4);
+    shipObj ship1 = new shipObj(1,10,5);
+    supplyShipObj supplyship1 = new supplyShipObj(2,10,10,50,50);
+    
+    try {
+            refeulStation.getFuel(ship1);
+    } catch (InterruptedException  e) {
+            Thread.currentThread().interrupt();
+        }
+    try {
+            refeulStation.getFuel(ship1);
+    } catch (InterruptedException  e) {
+            Thread.currentThread().interrupt();
+        }
+    try {
+            refeulStation.getFuel(ship1);
+    } catch (InterruptedException  e) {
+            Thread.currentThread().interrupt();
+        }
 }

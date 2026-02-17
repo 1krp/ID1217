@@ -36,56 +36,58 @@ public class refuelStationMonitor {
 
     public void getFuel(shipObj ship) throws InterruptedException {
         synchronized (this) {
+            long start = System.nanoTime();
             while (occupiedSlots == dockingSlots ||
                 stationNitrogenLevel < ship.nitrogenCapacity ||
                 stationQuantumLevel < ship.quantumCapacity) {
                     //System.out.println("ship id: " + ship.id + " checks status");
                     wait();
             }
+            long stop = System.nanoTime();
+            ship.timeInQ += (stop - start)/1000000;
             occupiedSlots++;
             withdawFuel(ship.nitrogenCapacity, ship.quantumCapacity);
-            ship.refulingCounter++;
-            System.out.println("Ship: "+ship.id + " is Refueling for the " + ship.refulingCounter + "'th time");
-            //printCapacity();
         }
-
         
+        ship.refulingCounter++;
+        System.out.println("Ship: "+ship.id + " is Refueling for the " + ship.refulingCounter + "'th time");
+        //printCapacity();
+
         int sleepDuration = r.nextInt(1000)+1000;
         Thread.sleep(sleepDuration);
-
         synchronized (this) {
             occupiedSlots--;
             //System.out.println("Free docks: " + (dockingSlots - occupiedSlots));
             notifyAll();
         }
-
     }
+
     public void depositFuel(supplyShipObj supplyShip) throws InterruptedException {
         synchronized (this) {
             while (occupiedSlots == dockingSlots && shipsLeft.get() > 1) {
-                    //System.out.println("ship id: " + ship.id + " checks status");
-                    wait();
+            //System.out.println("ship id: " + ship.id + " checks status");
+            wait();
             }
             occupiedSlots++;
             System.out.println("SupplyShip: "+ supplyShip.id + " has docked, and is waiting to refuel");
             
-
             while ((maxN - supplyShip.TransportNitrogenCapacity < stationNitrogenLevel || 
             maxQ - supplyShip.TransportQuantumCapacity < stationQuantumLevel) && shipsLeft.get() > 1) { 
                 wait();
             }
-            printCapacity();
-            System.out.println("depositing");
-            depoFuel(supplyShip.TransportNitrogenCapacity, supplyShip.TransportQuantumCapacity);
-            printCapacity();
+            if(shipsLeft.get() > 1){
+                printCapacity();
+                System.out.println("depositing");
+                depoFuel(supplyShip.TransportNitrogenCapacity, supplyShip.TransportQuantumCapacity);
+                printCapacity();
 
-            System.out.println("refueling");
-            withdawFuel(supplyShip.nitrogenCapacity, supplyShip.quantumCapacity);
-            //printCapacity();
-        }
-
+                System.out.println("refueling");
+                withdawFuel(supplyShip.nitrogenCapacity, supplyShip.quantumCapacity);
+                //printCapacity();
+            }
+        }    
         supplyShip.depositingCounter++;
-        int sleepDuration = r.nextInt(1000)+1000;
+        int sleepDuration = r.nextInt(2000)+2000;
         Thread.sleep(sleepDuration);
 
         synchronized (this) {
@@ -93,7 +95,7 @@ public class refuelStationMonitor {
             //System.out.println("Slots now avalible: " + (dockingSlots - occupiedSlots));
             notifyAll();
         }
-        
+                
     }
 
 }   

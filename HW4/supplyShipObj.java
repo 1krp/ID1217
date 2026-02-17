@@ -9,6 +9,7 @@ public class supplyShipObj implements Runnable{
     public int TransportNitrogenCapacity;
     public int TransportQuantumCapacity;
     public int depositingCounter;
+    public long timeInQ;
 
     Random r = new Random();
     
@@ -21,6 +22,7 @@ public class supplyShipObj implements Runnable{
         this.TransportNitrogenCapacity = tN;
         this.TransportQuantumCapacity = tQ;
         this.depositingCounter = 0;
+        this.timeInQ = 0;
     }
 
     @Override
@@ -35,6 +37,7 @@ public class supplyShipObj implements Runnable{
                 Thread.currentThread().interrupt();
             }
         }
+        System.out.println("");
         System.out.println("ALL DONE - SupplyShip: " + id + " Has deposited: " + depositingCounter + " times");
     }
 }

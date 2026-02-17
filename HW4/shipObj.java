@@ -8,22 +8,26 @@ public class shipObj implements Runnable{
     public int nitrogenCapacity;
     public int quantumCapacity;
     public int refulingCounter;
+    public long timeInQ;
+    private int rounds;
 
     Random r = new Random();
     
-    public shipObj(refuelStationMonitor station, int id){
+    public shipObj(refuelStationMonitor station, int id, int rounds){
         this.station = station;
         this.id = id;
         this.nitrogenCapacity = r.nextInt(10);
         this.quantumCapacity = r.nextInt(10);
         this.refulingCounter = 0;
+        this.timeInQ = 0;
+        this.rounds = rounds;
     }
 
     @Override
     public void run() {
-        while(refulingCounter < 5){       
+        while(refulingCounter < rounds){       
             try {
-                int sleepDuration = r.nextInt(5000)+3000;
+                int sleepDuration = r.nextInt(1000)+1000;
                 //System.out.println("ship: " + this.id + " sleeps for: " + sleepDuration/1000 + " seconds");
                 Thread.sleep(sleepDuration);
                 station.getFuel(this);
@@ -32,7 +36,7 @@ public class shipObj implements Runnable{
             }
         }
         int left = station.shipsLeft.get() - 1;
-        System.out.println("ship: " + this.id + " is done, ships left: " + left);
+        System.out.println("Ship: " + this.id + " is done, ships left: " + left);
         station.shipsLeft.getAndDecrement();
     }
 }

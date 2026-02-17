@@ -31,7 +31,8 @@ public class shipObj implements Runnable{
                 System.out.println(e.getMessage());
             }
         }
-        System.out.println("ship: " + this.id + " is done");
-        station.doneRefulingCounter.getAndDecrement();
+        int left = station.shipsLeft.get() - 1;
+        System.out.println("ship: " + this.id + " is done, ships left: " + left);
+        station.shipsLeft.getAndDecrement();
     }
 }

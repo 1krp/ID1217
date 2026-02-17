@@ -25,7 +25,7 @@ public class supplyShipObj implements Runnable{
 
     @Override
     public void run() {
-        while(station.doneRefulingCounter.get() != 0){       
+        while(station.shipsLeft.get() != 0){       
             try {
                 int sleepDuration = r.nextInt(5000)+1000;
                 //System.out.println("ship: " + this.id + " sleeps for: " + sleepDuration/1000 + " seconds");
@@ -35,6 +35,6 @@ public class supplyShipObj implements Runnable{
                 Thread.currentThread().interrupt();
             }
         }
-        System.out.println("ALL DONE");
+        System.out.println("ALL DONE - SupplyShip: " + id + " Has deposited: " + depositingCounter + " times");
     }
 }

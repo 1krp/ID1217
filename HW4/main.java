@@ -1,5 +1,6 @@
+import java.util.concurrent.atomic.AtomicInteger;
 
-
+public class main {
 
 
 public static void main(String[] args) throws InterruptedException{
@@ -11,16 +12,16 @@ public static void main(String[] args) throws InterruptedException{
     final int Q = 300;          // StraringAmount
     final AtomicInteger nShip = new AtomicInteger(16);       // #Ships
 
-    refuelStationMonitor refeulStation = new refuelStationMonitor(mN,mQ,N,Q,V,nShip); // mN,mQ,N,Q,slots
+    refuelStationMonitor refuelStation = new refuelStationMonitor(mN,mQ,N,Q,V,nShip); // mN,mQ,N,Q,slots
     
-    Thread supplyShip = new Thread(new supplyShipObj(refeulStation,99999,100,100));
+    Thread supplyShip = new Thread(new supplyShipObj(refuelStation,99999,100,100));
     supplyShip.start();
     System.out.println("supplyShip has been started");
 
     Thread[] shipThreads = new Thread[nShip.get()];
     shipObj[] shipObjs = new shipObj[nShip.get()];
     for(int i = 0; i < nShip.get(); i++){
-        shipObjs[i] = new shipObj(refeulStation, i, rounds);
+        shipObjs[i] = new shipObj(refuelStation, i, rounds);
         shipThreads[i] = new Thread(shipObjs[i]);
     }
 
@@ -32,4 +33,5 @@ public static void main(String[] args) throws InterruptedException{
     supplyShip.join();
 
     for(shipObj s : shipObjs) System.out.println("ship: " + s.id + " avg Time in Queue (ms): " + s.timeInQ/rounds);
+}
 }

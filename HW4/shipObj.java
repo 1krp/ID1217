@@ -7,9 +7,9 @@ public class shipObj implements Runnable{
     public int id;
     public int nitrogenCapacity;
     public int quantumCapacity;
-    public int refulingCounter;
     public long timeInQ;
     private int rounds;
+    public int refuelingCounter;
 
     Random r = new Random();
     
@@ -18,14 +18,14 @@ public class shipObj implements Runnable{
         this.id = id;
         this.nitrogenCapacity = r.nextInt(10);
         this.quantumCapacity = r.nextInt(10);
-        this.refulingCounter = 0;
+        this.refuelingCounter = 0;
         this.timeInQ = 0;
         this.rounds = rounds;
     }
 
     @Override
     public void run() {
-        while(refulingCounter < rounds){       
+        while(refuelingCounter < rounds){       
             try {
                 int sleepDuration = r.nextInt(1000)+1000;
                 //System.out.println("ship: " + this.id + " sleeps for: " + sleepDuration/1000 + " seconds");

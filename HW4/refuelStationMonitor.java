@@ -25,11 +25,11 @@ public class refuelStationMonitor {
         System.out.println("    N = " + stationNitrogenLevel);
         System.out.println("    Q = " + stationQuantumLevel);
     }
-    private void withdawFuel(int N, int Q){
+    private void withdrawFuel(int N, int Q){
         stationNitrogenLevel -= N;
         stationQuantumLevel -= Q;
     }
-    private void depoFuel(int N, int Q){
+    private void depositFuel(int N, int Q){
         stationNitrogenLevel += N;
         stationQuantumLevel += Q;        
     }
@@ -46,11 +46,11 @@ public class refuelStationMonitor {
             long stop = System.nanoTime();
             ship.timeInQ += (stop - start)/1000000;
             occupiedSlots++;
-            withdawFuel(ship.nitrogenCapacity, ship.quantumCapacity);
+            withdrawFuel(ship.nitrogenCapacity, ship.quantumCapacity);
         }
         
-        ship.refulingCounter++;
-        System.out.println("Ship: "+ship.id + " is Refueling for the " + ship.refulingCounter + "'th time");
+        ship.refuelingCounter++;
+        System.out.println("Ship: "+ship.id + " is Refueling for the " + ship.refuelingCounter + "'th time");
         //printCapacity();
 
         int sleepDuration = r.nextInt(1000)+1000;
@@ -78,11 +78,11 @@ public class refuelStationMonitor {
             if(shipsLeft.get() > 1){
                 printCapacity();
                 System.out.println("depositing");
-                depoFuel(supplyShip.TransportNitrogenCapacity, supplyShip.TransportQuantumCapacity);
+                depositFuel(supplyShip.TransportNitrogenCapacity, supplyShip.TransportQuantumCapacity);
                 printCapacity();
 
                 System.out.println("refueling");
-                withdawFuel(supplyShip.nitrogenCapacity, supplyShip.quantumCapacity);
+                withdrawFuel(supplyShip.nitrogenCapacity, supplyShip.quantumCapacity);
                 //printCapacity();
             }
         }    

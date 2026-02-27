@@ -10,10 +10,10 @@ public class Handler implements Runnable {
             DataInputStream in = new DataInputStream(socket.getInputStream());
             int clientID = in.readInt();
             int pairedClient = -1;
-            try{ pairedClient = paringMonitor.pairClient(clientID); } 
+            try{ pairedClient = paringMonitor.pairClients(clientID); } 
             catch( InterruptedException e) {System.out.println("paring error" + e.getMessage()); }
             
-            System.out.println("Handler: Client " + clientID + " Paired with: " + pairedClient);
+            System.out.println("Handler: Client " + clientID + " Partner: " + pairedClient);
 
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             out.writeInt(pairedClient);

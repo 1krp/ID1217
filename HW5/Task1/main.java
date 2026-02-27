@@ -7,7 +7,7 @@
             if (args.length >1) clientThreadPoolSize = Integer.parseInt(args[1]);
             if (args.length >0) port = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
-            System.out.println("USAGE: java ReverseServer [port] [poolSize]");
+            System.out.println("USAGE: [port] [numClients]");
             System.exit(1);
         }
 

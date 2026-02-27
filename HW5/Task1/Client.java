@@ -12,9 +12,7 @@ public class Client implements Runnable{
     }
 
     public void run(){
-        System.out.println("Im client: " + clientID);
         int clientPartner = -1;
-        
         try {
             Socket clientSocket = new Socket("localhost", port);
 

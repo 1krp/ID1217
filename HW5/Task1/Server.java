@@ -4,11 +4,13 @@ import java.util.concurrent.*;
 
 public class Server {
     private int port;
+    private int numClients;
     private int serverThreadPoolSize;
 
-    public Server (int port, int serverThreadPoolSize){
+    public Server (int port, int serverThreadPoolSize, int numClients){
         this.port = port;
         this.serverThreadPoolSize = serverThreadPoolSize;
+        this.numClients = numClients;
     }
 
     public void runServer(paringMonitor paringMonitor) throws IOException {
@@ -19,7 +21,7 @@ public class Server {
             System.out.println("Can not listen on port: " + port);
             System.exit(1);
         }
-        System.out.println("Server started at port: " + port + " with " + serverThreadPoolSize + " threads");
+        System.out.println("Server started at port: " + port + " with " + serverThreadPoolSize + " threads and supporting " + numClients + " clients");
         ExecutorService executor = Executors.newFixedThreadPool(serverThreadPoolSize);
         while(true){
             try{
@@ -27,20 +29,23 @@ public class Server {
             executor.execute( new Handler(socket, paringMonitor) );
             
             } catch (SocketException SocketE){ SocketE.printStackTrace();}
-
         }
     }
     public static void main(String[] args) {
-        int serverThreadPoolSize = 4, port = 9999;
+        // args: <portNr> <serverThreads> <clients>
+        int port = 9999;
+        int serverThreadPoolSize = 4;
+        int numClients = 4;
         try {
+            if (args.length >2) numClients = Integer.parseInt(args[2]);
             if (args.length >1) serverThreadPoolSize = Integer.parseInt(args[1]);
             if (args.length >0) port = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
-            System.out.println("USAGE: java ReverseServer [port] [poolSize]");
+            System.out.println("USAGE: <portNr> <serverThreads> <clients>");
             System.exit(1);
         }
-        Server server = new Server(port, serverThreadPoolSize);
-        paringMonitor paringMonitor = new paringMonitor(serverThreadPoolSize);
+        Server server = new Server(port, serverThreadPoolSize, numClients);
+        paringMonitor paringMonitor = new paringMonitor(numClients);
         try {
           server.runServer(paringMonitor);  
         } catch (IOException e) {System.out.println("runServer error " + e.getMessage());}

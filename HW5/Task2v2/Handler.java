@@ -5,7 +5,7 @@ public class Handler implements Runnable {
     private TableMonitor tableMonitor;
     public Handler(Socket socket, TableMonitor tableMonitor) { this.socket = socket; this.tableMonitor = tableMonitor;}
     public void run() {
-        try { 
+        try {
             DataInputStream in = new DataInputStream(socket.getInputStream());
             int philosopherID = in.readInt();
             boolean hasEaten = false;

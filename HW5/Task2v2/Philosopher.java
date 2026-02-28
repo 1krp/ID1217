@@ -13,7 +13,7 @@ public class Philosopher implements Runnable{
         this.port = port;
         this.timesEaten = 0;
     }
-    
+
     public void run(){
         while (true) { 
             boolean hasEaten = false;

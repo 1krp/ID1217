@@ -11,7 +11,6 @@ public class pairngMonitor{
         this.numClients = numClients;
     }
 
-
     public synchronized int pairClients(int clientID) throws InterruptedException {
         //catches other clients so that they wait for the first two clients to pair.
         while (first != 0 && second != 0) { 

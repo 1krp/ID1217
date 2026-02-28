@@ -3,20 +3,42 @@ import java.util.Random;
 public class TableMonitor{
     int numClients;
     Fork[] forks;
-
+    int[] timesEaten;
     Random r = new Random();
 
     public TableMonitor(int numClients , Fork[] forks){
         this.numClients = numClients;
         this.forks = forks;
+        this.timesEaten = new int[numClients + 1];
     }
+
+    private boolean canEat(int philosopherID, int left, int right) {
+        int minEaten = 999999;
+        boolean forksAvalible = forks[left].tryPickUp() && forks[right].tryPickUp();
+    
+        if (forksAvalible) {
+            for(int i = 1; i < timesEaten.length; i++) {
+                if(minEaten > timesEaten[i]){
+                    minEaten = timesEaten[i];
+                }
+            }
+            if(timesEaten[philosopherID] == minEaten) {
+                return true;
+            }
+        } 
+        return false;
+    }
+
     public boolean forkDistribution(int philosopherID) throws InterruptedException {
         int leftForkID = philosopherID;
         int rightForkID = (philosopherID % numClients) + 1; // Philosopher 1 gets fork 1 and 2, Philosopher 5 gets fork 5 and 1
 
         synchronized (this) {
-            while (!(forks[leftForkID].tryPickUp() && forks[rightForkID].tryPickUp())) { 
-                // The philosophers that cant aquire its 2 forks wait here.
+        
+            while (!canEat(philosopherID, leftForkID, rightForkID)) { 
+                //can eats returns true if a philosopher can aquire its forks and is the 
+                //philosopher that has eaten the least amount of times among all the philosophers.
+                //Hence, here is where the other philosopher waits, that are not allowed to eat.
                 wait();
             }
             pickUpFork(forks[leftForkID]);
@@ -30,6 +52,7 @@ public class TableMonitor{
         //Thread.sleep(sleepDuration);
 
         synchronized (this) {
+            timesEaten[philosopherID]++;
             putDownFork(forks[leftForkID]);
             putDownFork(forks[rightForkID]);
 
@@ -40,7 +63,6 @@ public class TableMonitor{
         }
 
     }
-
 
     private void pickUpFork(Fork fork){
         fork.pickUp();

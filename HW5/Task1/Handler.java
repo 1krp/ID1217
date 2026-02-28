@@ -6,7 +6,6 @@ public class Handler implements Runnable {
     public Handler(Socket socket, pairngMonitor pairngMonitor) { this.socket = socket; this.pairngMonitor = pairngMonitor;}
     public void run() {
         try {
-            
             DataInputStream in = new DataInputStream(socket.getInputStream());
             int clientID = in.readInt();
             int pairedClient = -1;

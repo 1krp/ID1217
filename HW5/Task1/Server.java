@@ -13,7 +13,7 @@ public class Server {
         this.numClients = numClients;
     }
 
-    public void runServer(pairngMonitor pairngMonitor) throws IOException {
+    public void runServer(pairingMonitor pairingMonitor) throws IOException {
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(port);
@@ -26,7 +26,7 @@ public class Server {
         while(true){
             try{
             Socket socket = serverSocket.accept();
-            executor.execute( new Handler(socket, pairngMonitor) );
+            executor.execute( new Handler(socket, pairingMonitor) );
             
             } catch (SocketException SocketE){ SocketE.printStackTrace();}
         }
@@ -45,9 +45,9 @@ public class Server {
             System.exit(1);
         }
         Server server = new Server(port, serverThreadPoolSize, numClients);
-        pairngMonitor pairngMonitor = new pairngMonitor(numClients);
+        pairingMonitor pairingMonitor = new pairingMonitor(numClients);
         try {
-          server.runServer(pairngMonitor);  
+          server.runServer(pairingMonitor);  
         } catch (IOException e) {System.out.println("runServer error " + e.getMessage());}
     }
 }

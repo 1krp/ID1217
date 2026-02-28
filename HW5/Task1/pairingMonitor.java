@@ -1,13 +1,13 @@
 
 
-public class pairngMonitor{
+public class pairingMonitor{
     private int pairedClients = 0;
     private int numClients;
 
     private int first = 0;
     private int second = 0;
 
-    public pairngMonitor(int numClients){
+    public pairingMonitor(int numClients){
         this.numClients = numClients;
     }
 

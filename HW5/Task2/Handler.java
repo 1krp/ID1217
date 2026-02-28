@@ -8,12 +8,12 @@ public class Handler implements Runnable {
         try {
             
             DataInputStream in = new DataInputStream(socket.getInputStream());
-            int plateID = in.readInt();
+            int philosopherID = in.readInt();
             int pairedClient = -1;
-            try{ pairedClient = tableMonitor.forkDistribution(plateID); } 
+            try{ pairedClient = tableMonitor.forkDistribution(philosopherID); } 
             catch( InterruptedException e) {System.out.println("tableMonitor error" + e.getMessage()); }
             
-            System.out.println("Handler: Philosopher " + plateID + " Partner: " + pairedClient);
+            System.out.println("Handler: Philosopher " + philosopherID + " Partner: " + pairedClient);
 
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             out.writeInt(pairedClient);

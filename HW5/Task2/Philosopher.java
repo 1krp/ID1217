@@ -4,14 +4,11 @@ import java.net.*;
 
 public class Philosopher implements Runnable{
     private int plateID;
-    private int leftForkID;
-    private int rightForkID;
+
     private int port;
 
-    public Philosopher(int plateID, int leftForkID, int rightForkID, int port){
+    public Philosopher(int plateID, int port){
         this.plateID = plateID;
-        this.leftForkID = leftForkID;
-        this.rightForkID = rightForkID;
         this.port = port;
     }
     void think(){
@@ -30,6 +27,7 @@ public class Philosopher implements Runnable{
     public void run(){
         int clientPartner = -1;
         try {
+
             Socket clientSocket = new Socket("localhost", port);
 
             DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());

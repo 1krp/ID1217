@@ -3,24 +3,22 @@
 public class TableMonitor{
     int numClients;
     Fork[] forks;
-    int[] clientPair = new int[2];
 
     public TableMonitor(int numClients , Fork[] forks){
         this.numClients = numClients;
         this.forks = forks;
+
     }
 
-    private void clearArr(int[] arr){
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = 0;
-        }
-    }
 
-    public synchronized int forkDistribution(int plateID) throws InterruptedException {
+    public synchronized int forkDistribution(int philosopherID) throws InterruptedException {
+        int  leftForkID = philosopherID;
+        int rightForkID = (philosopherID % numClients) + 1; // Philosopher 1 gets fork 1 and 2, Philosopher 5 gets fork 5 and 1
+        System.out.println("TableMonitor: Philosopher " + philosopherID + " requests fork " + leftForkID + " and " + rightForkID);
 
 
 
-        return forkDistribution(plateID, 0);
+        return;
     }
 
     

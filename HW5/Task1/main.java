@@ -13,7 +13,7 @@
 
         ExecutorService executor = Executors.newFixedThreadPool(clientThreadPoolSize);
         for (int i = 0; i < clientThreadPoolSize; i++){
-            executor.execute(new Client(i+1, port));
+            executor.execute(new Client(i+1, port, clientThreadPoolSize));
         }
         executor.shutdown();
 

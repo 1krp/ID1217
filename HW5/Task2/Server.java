@@ -36,6 +36,10 @@ public class Server {
         int port = 9999;
         int serverThreadPoolSize = 4;
         int numClients = 5;
+        Fork[] forks = new Fork[numClients];
+            for (int i = 0; i < numClients; i++){
+            forks[i] = new Fork(i+1);
+        }
         try {
             if (args.length >1) serverThreadPoolSize = Integer.parseInt(args[1]);
             if (args.length >0) port = Integer.parseInt(args[0]);
@@ -44,7 +48,7 @@ public class Server {
             System.exit(1);
         }
         Server server = new Server(port, serverThreadPoolSize, numClients);
-        TableMonitor tableMonitor = new TableMonitor(numClients);
+        TableMonitor tableMonitor = new TableMonitor(numClients, forks);
         try {
           server.runServer(tableMonitor);  
         } catch (IOException e) {System.out.println("runServer error " + e.getMessage());}

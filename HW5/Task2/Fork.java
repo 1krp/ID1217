@@ -2,7 +2,7 @@ import java.util.concurrent.Semaphore;
 
 public class Fork {
     Semaphore forkSemaphore;
-    public Fork(int plateID){
+    public Fork(int philosopherID){
         forkSemaphore = new Semaphore(1, true);
     }   
     public boolean pickUp(){

@@ -4,14 +4,14 @@ import java.net.*;
 
 public class Philosopher implements Runnable{
     private int plateID;
-    private fork leftFork;
-    private fork rightFork;
+    private int leftForkID;
+    private int rightForkID;
     private int port;
 
-    public Philosopher(int plateID, fork leftFork, fork rightFork, int port){
+    public Philosopher(int plateID, int leftForkID, int rightForkID, int port){
         this.plateID = plateID;
-        this.leftFork = leftFork;
-        this.rightFork = rightFork;
+        this.leftForkID = leftForkID;
+        this.rightForkID = rightForkID;
         this.port = port;
     }
     void think(){
@@ -24,18 +24,7 @@ public class Philosopher implements Runnable{
             Thread.sleep(1000);
         } catch (InterruptedException e) {System.out.println("Sleep error: " + e.getMessage());}
     }
-    void pickUpLeftFork(){
-        leftFork.pickUp();
-    }
-    void pickUpRightFork(){
-        rightFork.pickUp();
-    }
-    void putDownLeftFork(){
-        leftFork.putDown();
-    }   
-    void putDownRightFork(){
-        rightFork.putDown();
-    }
+
 
 
     public void run(){

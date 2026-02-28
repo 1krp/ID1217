@@ -15,23 +15,23 @@ public class TableMonitor{
         int  leftForkID = philosopherID;
         int rightForkID = (philosopherID % numClients) + 1; // Philosopher 1 gets fork 1 and 2, Philosopher 5 gets fork 5 and 1
         System.out.println("TableMonitor: Philosopher " + philosopherID + " requests fork " + leftForkID + " and " + rightForkID);
+        pickUpFork(forks[leftForkID]);
+        pickUpFork(forks[rightForkID]);
 
 
+        
+        putDownFork(forks[leftForkID]);
+        putDownFork(forks[rightForkID]);
 
-        return;
+        return rightForkID;
     }
 
     
-    void pickUpLeftFork(Fork leftFork){
-        leftFork.pickUp();
+    void pickUpFork(Fork fork){
+        fork.pickUp();
     }
-    void pickUpRightFork(Fork rightFork){
-        rightFork.pickUp();
-    }
-    void putDownLeftFork(Fork leftFork){
-        leftFork.putDown();
+    void putDownFork(Fork fork){
+        fork.putDown();
     }   
-    void putDownRightFork(Fork rightFork){
-        rightFork.putDown();
-    }
+
 }

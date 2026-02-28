@@ -29,18 +29,22 @@ public class TableMonitor{
         return false;
     }
 
-    public boolean forkDistribution(int philosopherID) throws InterruptedException {
+    public long forkDistribution(int philosopherID) throws InterruptedException {
         int leftForkID = philosopherID;
         int rightForkID = (philosopherID % numClients) + 1; // Philosopher 1 gets fork 1 and 2, Philosopher 5 gets fork 5 and 1
+        long timeInQ;
 
         synchronized (this) {
-        
+            long start = System.nanoTime();
             while (!canEat(philosopherID, leftForkID, rightForkID)) { 
                 //can eats returns true if a philosopher can aquire its forks and is the 
                 //philosopher that has eaten the least amount of times among all the philosophers.
                 //Hence, here is where the other philosopher waits, that are not allowed to eat.
                 wait();
             }
+            long stop = System.nanoTime();
+            timeInQ = (stop - start)/1000;
+
             pickUpFork(forks[leftForkID]);
             pickUpFork(forks[rightForkID]);
 
@@ -59,7 +63,7 @@ public class TableMonitor{
             System.out.println("TableMonitor: Philosopher " + philosopherID + " put down: " + leftForkID + " and " + rightForkID);
 
             notifyAll();
-            return true;
+            return timeInQ;
         }
 
     }

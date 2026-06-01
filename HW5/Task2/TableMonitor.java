@@ -27,7 +27,7 @@ public class TableMonitor{
         }
 
         int sleepDuration = r.nextInt(1000)+1000;
-        //Thread.sleep(sleepDuration);
+        Thread.sleep(sleepDuration);
 
         synchronized (this) {
             putDownFork(forks[leftForkID]);

@@ -30,7 +30,7 @@ public class Philosopher implements Runnable{
             System.out.println("Philosopher: " + philosopherID + " has eaten: " + timesEaten + " times");
             int sleepDuration = r.nextInt(5000)+2000;
             System.out.println("Phiosopher now thinks for " + sleepDuration/1000 + " seconds");
-            //try { Thread.sleep(sleepDuration); } catch (InterruptedException e) {;}
+            try { Thread.sleep(sleepDuration); } catch (InterruptedException e) {;}
         }
     }
 }
